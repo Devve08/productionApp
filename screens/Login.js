@@ -47,7 +47,7 @@ export default function Login({ navigation }) {
         <InnerContainer>
           <PageLogo
             resizeMode="cover"
-            source={require("./../assets/images/logo.png")}
+            source={require("./../assets/images/1978.png")}
           />
           <SubTitle>Account Login</SubTitle>
 

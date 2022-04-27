@@ -43,7 +43,11 @@ export default function RecentWork({ navigation }) {
             data={projectsList.projects_array}
             keyExtractor={(item, index) => index}
             renderItem={({ item }) => (
-              <FlatlistComponent title={item.pp_project_label} image={image} />
+              <TouchableOpacity onPress={() =>
+                navigation.navigate("Calendar", { pp_id: item.pp_id })
+              }>
+                <FlatlistComponent title={item.pp_project_label} image={image} />
+              </TouchableOpacity>
             )}
           />
         )}

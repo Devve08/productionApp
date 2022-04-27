@@ -28,7 +28,7 @@ export default function DrawerContent(props) {
           }}
         >
           <Image
-            source={require("../assets/images/logo.png")}
+            source={require("../assets/images/1978.png")}
             style={{
               width: 120,
               height: 120,

@@ -9,6 +9,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      appointmentModalOpen: false,
       aptArray: [],
       selectedAptDates: {},
       selectedDate: "",
@@ -16,12 +17,13 @@ export default class App extends Component {
   }
 
   checkDate(date) {
+    console.log(date)
     let result = this.state.aptArray.filter(
       (item) => item.pa_apt_date === date
     );
     if (result.length > 0) {
-      console.log(result[0].pa_id);
       this.getAppointmentInfo(result[0].pa_id);
+      this.setState({appointmentModalOpen : true})
     }
   }
 
@@ -51,7 +53,6 @@ export default class App extends Component {
     const { getListOfAppointments } = this.context;
     let id = this.props.route.params.pp_id;
     const res = await getListOfAppointments(id);
-
     res.apt_array.map((item) =>
       this.setState({ aptArray: [...this.state.aptArray, item] })
     );
@@ -62,7 +63,7 @@ export default class App extends Component {
     const { selectedAptDates } = this.state;
     return (
       <View style={styles.container}>
-        {console.log(this.state.aptArray)}
+        {/* {console.log(this.state.aptArray)} */}
         <Calendar
           onDayPress={(day) => this.checkDate(day.dateString)}
           markedDates={selectedAptDates}

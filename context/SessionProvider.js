@@ -42,6 +42,7 @@ export default function SessionProvider({ children }) {
       setIsLoading(false);
     } else {
       setIsLoggedIn(false);
+      setIsLoading(false);
     }
   }, []);
 

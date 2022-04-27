@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "testApp",
-    "slug": "testApp",
+    "name": "Production App",
+    "slug": "productionApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/logo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/1978.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
