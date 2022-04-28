@@ -31,9 +31,13 @@ export default function Contacts(props) {
           renderItem={({ item }) => (
             <View style={styles.btnProject}>
               <View>
+                <View style={{flexDirection: "row", justifyContent: "flex-start"}}>
                 <Text style={styles.titleText}>{item.pc_first_name}</Text>
+                <Text style={styles.titleText}>{item.pc_last_name}</Text>
+                </View>
+                
                 <Text style={{ fontSize: 16, paddingHorizontal: 10 }}>
-                  {item.pc_last_name}
+                  {item.pc_occupation}
                 </Text>
               </View>
               <View style={styles.iconsContainer}>
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 17,
     fontWeight: "bold",
-    paddingHorizontal: 10,
+    paddingHorizontal: 3,
   },
   title: {
     borderTopColor: "#000000",

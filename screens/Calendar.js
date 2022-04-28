@@ -1,6 +1,7 @@
 import React, { Component, useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Calendar, CalendarList, Agenda } from "react-native-calendars";
+import AppointmentModal from "../components/Modals/AppointmentModal";
 import SessionContext from "../context/SessionContext";
 import getRequest from "../network/network";
 
@@ -12,18 +13,19 @@ export default class App extends Component {
       appointmentModalOpen: false,
       aptArray: [],
       selectedAptDates: {},
+      appointmentInfo: {},
       selectedDate: "",
     };
   }
 
   checkDate(date) {
-    console.log(date)
+
     let result = this.state.aptArray.filter(
       (item) => item.pa_apt_date === date
     );
     if (result.length > 0) {
       this.getAppointmentInfo(result[0].pa_id);
-      this.setState({appointmentModalOpen : true})
+      this.setState({ appointmentModalOpen: true })
     }
   }
 
@@ -35,12 +37,15 @@ export default class App extends Component {
       let pa_id = id;
       let params = { member_id, g_hash, pa_id, access_token };
       let res = await getRequest(params, "request/api/getappointmentinfo");
-      console.log("appp", res);
+      this.setState({ appointmentInfo: res.apt_array })
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  closeModal() {
+    this.setState({ appointmentModalOpen: false })
+  }
   getMarkedDates() {
     let dates = {};
     this.state.aptArray.forEach((val) => {
@@ -90,6 +95,10 @@ export default class App extends Component {
             <Text style={styles.btnText}>PROJECT FILES</Text>
           </TouchableOpacity>
         </View>
+        <AppointmentModal
+          closeModal={() => this.setState({ appointmentModalOpen: false })}
+          appointmentModalOpen={this.state.appointmentModalOpen}
+          appointmentInfo={this.state.appointmentInfo} />
       </View>
     );
   }
