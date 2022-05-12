@@ -28,8 +28,7 @@ import getRequest from "../network/network";
 import Loading from "./Loading";
 import SessionContext from "../context/SessionContext";
 
-const { primary, secondary, light, darkLight } = Colors;
-const baseURL = "http://production.ihorlubricants.me";
+const { primary, secondary, light, darkLight, white, black } = Colors;
 
 export default function Login({ navigation }) {
   const [hidePassword, setHidePassword] = useState(true);
@@ -54,7 +53,7 @@ export default function Login({ navigation }) {
           <StyledFormArea>
             <MyTextInput
               label={"Email Address"}
-              icon="mail"
+              icon="person"
               placeholder="example@gmail.com"
               placeholderTextColor={"grey"}
               onChangeText={(text) => setUserName(text)}
@@ -101,7 +100,7 @@ const MyTextInput = ({
   return (
     <View>
       <LeftIcon>
-        <Octicons name={icon} size={30} color={primary} />
+        <Octicons name={icon} size={30} color={black} />
       </LeftIcon>
       <StyledInputLabel>{label}</StyledInputLabel>
       <StyledTextInput {...props} />
@@ -110,7 +109,7 @@ const MyTextInput = ({
           <Ionicons
             name={hidePassword ? "md-eye-off" : "md-eye"}
             size={30}
-            color={primary}
+            color={black}
           />
         </RightIcon>
       )}

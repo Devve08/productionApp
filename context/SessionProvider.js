@@ -123,6 +123,7 @@ export default function SessionProvider({ children }) {
         pa_user_name,
         pa_password,
       });
+      console.log("hello", res)
       if (res.data) {
         const data = {
           scope: "*",

@@ -4,6 +4,7 @@ import { Calendar, CalendarList, Agenda } from "react-native-calendars";
 import AppointmentModal from "../components/Modals/AppointmentModal";
 import SessionContext from "../context/SessionContext";
 import getRequest from "../network/network";
+import { Colors } from "../Styles/styles";
 
 export default class App extends Component {
   static contextType = SessionContext;
@@ -49,7 +50,7 @@ export default class App extends Component {
   getMarkedDates() {
     let dates = {};
     this.state.aptArray.forEach((val) => {
-      dates[val.pa_apt_date] = { selected: true, selectedColor: "#CA4143" };
+      dates[val.pa_apt_date] = { selected: true, selectedColor: Colors.primary };
     });
     this.setState({ selectedAptDates: dates });
   }
@@ -72,6 +73,7 @@ export default class App extends Component {
         <Calendar
           onDayPress={(day) => this.checkDate(day.dateString)}
           markedDates={selectedAptDates}
+          theme={{arrowColor: Colors.primary, todayTextColor: Colors.primary}}
         />
         <View>
           <TouchableOpacity

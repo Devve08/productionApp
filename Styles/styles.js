@@ -6,14 +6,17 @@ import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
 
 //colors 
 export const Colors = {
-    primary : '#CA4143',
+    primary : '#f7ba00',
     secondary: '#272727',
     light : '#edf5e1',
     darkLight: '#272727',
-    orange: '#ff8450'
+    orange: '#ff8450',
+    white: "#FFFFFF",
+    black: "#000000",
+    lightGrey: "#d5d5d5"
 }
 
-const { primary, secondary, light, darkLight} = Colors;
+const { primary, secondary, light, darkLight, white, black} = Colors;
 
 
 export const Container = styled.View`
@@ -24,7 +27,7 @@ export const Container = styled.View`
 export const StyledContainer = styled.View`
     flex: 1;
     padding: 40px 25px;
-    background-color: white;
+    background-color: black;
 `
 
 export const RowSpaceContainer = styled.View`
@@ -38,7 +41,7 @@ export const InnerContainer = styled.View`
     width: 100%;
     align-items: center;
     height: 100%;
-    background-color: white;
+    background-color: black;
 `
 
 export const PageLogo = styled.Image`
@@ -60,7 +63,7 @@ export const SubTitle = styled.Text`
     margin-top: 20px;
     letter-spacing: 1px;
     font-weight: bold;
-    color: ${secondary};
+    color: ${white};
 `
 
 export const StyledFormArea = styled.View`
@@ -78,7 +81,7 @@ export const StyledTextInput = styled.TextInput`
 `
 
 export const StyledInputLabel = styled.Text`
-    color: ${darkLight};
+    color: ${white};
     font-size: 13px;
     text-align: left;
 `
@@ -99,23 +102,19 @@ export const RightIcon = styled.TouchableOpacity`
 
 export const StyledButton = styled.TouchableOpacity`
     padding: 15px;
-    background-color: ${primary};
+    background-color: ${white};
     justify-content: center;
     border-radius: 5px;
     height: 60px;
     align-items: center;
     margin-top: 40px;
-    
-    ${(props)=> props.google == true ? `
-    margin-top: 10px;
-    ` : ''}
+   
 `
 
 export const ButtonText = styled.Text`
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 17px;
-
     ${(props)=> props.google == true ? `
     padding-left: 25px;
     ` : ''}

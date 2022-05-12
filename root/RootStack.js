@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import {Text} from 'react-native'
 import Login from "./../screens/Login";
 import FontAwesome from "react-native-vector-icons/FontAwesome5";
 import Welcome from "../screens/Welcome";
@@ -27,9 +28,9 @@ function DrawerStack() {
     <Drawer.Navigator
       screenOptions={{
         headerShown: true,
-        drawerActiveBackgroundColor: Colors.primary,
+        drawerActiveBackgroundColor: Colors.lightGrey,
         drawerActiveTintColor: "#fff",
-        drawerInactiveTintColor: Colors.darkLight,
+        drawerInactiveTintColor: Colors.black,
         drawerLabelStyle: {
           marginLeft: -20,
           fontSize: 16,
@@ -44,6 +45,9 @@ function DrawerStack() {
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={22} color={color} />
           ),
+          headerTitleStyle:{
+            textDecorationLine: 'line-through'
+          }
         }}
       />
       <Drawer.Screen
@@ -53,6 +57,9 @@ function DrawerStack() {
           drawerIcon: ({ color }) => (
             <FontAwesome name="city" size={22} color={color} />
           ),
+          headerTitleStyle:{
+            textDecorationLine: 'line-through'
+          }
         }}
       />
       <Drawer.Screen
@@ -64,6 +71,9 @@ function DrawerStack() {
           drawerIcon: ({ color }) => (
             <FontAwesome name="project-diagram" size={22} color={color} />
           ),
+          headerTitleStyle:{
+            textDecorationLine: 'line-through'
+          },
           headerStyle: {
             backgroundColor: "white",
           },
@@ -93,22 +103,37 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               component={DrawerStack}
             />
             <Stack.Screen
-              options={{ headerShown: true }}
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Calendar</Text>
+                },
+           }}
               name="Calendar"
               component={Calendar}
             />
             <Stack.Screen
-              options={{ headerShown: true }}
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Project</Text>
+                }, }}
               name="Project"
               component={Project}
             />
             <Stack.Screen
-              options={{ headerShown: true }}
+              options={{ headerShown: true,  
+                headerTitle: () => {
+                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Project Files</Text>
+                },}}
               name="ProjectFiles"
               component={ProjectFiles}
             />
             <Stack.Screen
-              options={{ headerShown: true }}
+              options={{ headerShown: true,   
+                headerTitle: () => {
+                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Contacts</Text>
+                }, }}
               name="Contacts"
               component={Contacts}
             />
