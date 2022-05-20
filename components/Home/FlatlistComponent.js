@@ -7,7 +7,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 export default function FlatlistComponent({ title, image, restaurant }) {
   return (
     <View style={{ width: 200, height: 150, marginRight: 10, marginTop: 5 }}>
-      <ImageBackground source={image} style={{ width: "100%", height: "100%" }}>
+      <ImageBackground source={{uri:image}} style={{ width: "100%", height: "100%" }}>
         <LinearGradient
           colors={["#00000000", "#000011"]}
           style={styles.linear}

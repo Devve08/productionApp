@@ -19,6 +19,7 @@ import { useContext, useState, useEffect } from "react";
 import Loading from "../screens/Loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SessionContext from "../context/SessionContext";
+import SingleNewsScreen from "../screens/SingleNewsScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -136,6 +137,11 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
                 }, }}
               name="Contacts"
               component={Contacts}
+            />
+            <Stack.Screen
+              options={{ headerShown: false}}
+              name="SingleNews"
+              component={SingleNewsScreen}
             />
           </>
         ) : (

@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const baseURL = "http://production.ihorlubricants.me";
 export default function SessionProvider({ children }) {
   const [projectsList, setProjectsList] = useState([]);
+  const [news, setNews] = useState()
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -87,6 +88,14 @@ export default function SessionProvider({ children }) {
     setProjectsList(res);
   };
 
+  const getNewsInfo = async () => {
+    let member_id = session.user.user_id;
+    let g_hash = session.user.g_hash;
+    let params = {member_id, g_hash};
+    let res = await getRequest(params, "request/api/getlistnews")
+    return res
+  }
+
   const getListOfContacts = async (id) => {
     let member_id = session.user.user_id;
     let g_hash = session.user.g_hash;
@@ -123,7 +132,6 @@ export default function SessionProvider({ children }) {
         pa_user_name,
         pa_password,
       });
-      console.log("hello", res)
       if (res.data) {
         const data = {
           scope: "*",
@@ -210,7 +218,8 @@ export default function SessionProvider({ children }) {
     getProjectsList,
     getListOfAppointments,
     getListOfContacts,
-    getListOfProjectFiles
+    getListOfProjectFiles,
+    getNewsInfo
   };
 
   return (

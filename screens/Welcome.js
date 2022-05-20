@@ -17,7 +17,7 @@ export default function Welcome({ navigation }) {
         <Container>
           <RecentWork navigation={navigation} />
           <CityGuideList navigation={navigation} />
-          <News />
+          <News navigation= {navigation} />
           <Footer />
         </Container>
       </ScrollView>

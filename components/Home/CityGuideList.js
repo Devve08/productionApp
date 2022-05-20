@@ -29,7 +29,7 @@ export default function CityGuideList({ navigation }) {
           data={data}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => (
-            <FlatlistComponent restaurant={true} image={image} title={item} />
+            <FlatlistComponent restaurant={true}  title={item} />
           )}
         />
       </View>

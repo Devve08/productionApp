@@ -46,7 +46,7 @@ export default function RecentWork({ navigation }) {
               <TouchableOpacity onPress={() =>
                 navigation.navigate("Calendar", { pp_id: item.pp_id })
               }>
-                <FlatlistComponent title={item.pp_project_label} image={image} />
+                <FlatlistComponent title={item.pp_project_label} image={item.project_img_logo}  />
               </TouchableOpacity>
             )}
           />

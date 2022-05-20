@@ -8,32 +8,32 @@ import {
   TouchableOpacity,
   View,
   Switch,
+  Pressable,
   ImageBackground
 } from "react-native";
 import SessionContext from "../context/SessionContext";
+import Entypo from "react-native-vector-icons/Entypo"
 import { Colors } from "../Styles/styles";
 
 export default function Projects({ navigation }) {
   const { projectsList, getProjectsList } = useContext(SessionContext);
-  const [isEnabled, setIsEnabled] = useState(false)
+  const [view, setView] = useState(0)
 
-  const toggleSwitch = () => {
-    setIsEnabled(!isEnabled)
-  }
   useEffect(() => {
     getProjectsList()
   }, []);
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: "row", justifyContent: "flex-end", alignItems: "center", paddingHorizontal: 20 }}>
-        <Text style={{ fontSize: 16, fontWeight: "bold", color: Colors.primary, marginRight: 5 }}>Change view</Text>
-        <Switch onValueChange={toggleSwitch} value={isEnabled} />
-      </View>
-      <View style={{paddingVertical:20}}>
-
-      </View>
-
-      {!isEnabled ? projectsList && (
+      <View style={styles.tabs}>
+      <Pressable style={styles.tab} onPress={()=>setView(0)}>
+        <Entypo name="list" color={view === 0 ? Colors.primary : Colors.black} size={40} />
+      </Pressable>
+        <Pressable style={styles.tab}  onPress={()=>setView(1)}>
+        
+        <Entypo name="grid" color={view === 1 ? Colors.primary : Colors.black} size={40} />
+      </Pressable>
+      </View> 
+      {view === 0 ? projectsList && (
         <FlatList
           keyExtractor={(item, index) => index}
           data={projectsList.projects_array}
@@ -134,5 +134,18 @@ const styles = StyleSheet.create({
     width: 180,
     height: 200,
     paddingHorizontal: 20
+  },
+  tabs:{ 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    alignItems: "center", 
+    paddingHorizontal: 20,
+    marginBottom:20,
+    paddingVertical: 10
+  },
+  tab:{
+    alignItems: "center",
+    justifyContent: "center",
+    width: "50%"
   }
 });

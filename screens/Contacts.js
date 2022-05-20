@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Fontisto";
 import SessionContext from "../context/SessionContext";
+import { Colors } from "../Styles/styles";
 
 export default function Contacts(props) {
   let project_id = props.route.params.project_id;
@@ -24,7 +25,7 @@ export default function Contacts(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Project Contacts</Text>
-      <View style={{ height: 250 }}>
+      <View >
         <FlatList
           keyExtractor={(item, index) => index}
           data={contacts}
@@ -45,7 +46,7 @@ export default function Contacts(props) {
                   onPress={() => Linking.openURL(`mailto:${item.pc_email}`)}
                   style={{ marginRight: 20 }}
                 >
-                  <Icon name="email" size={25} />
+                  <Icon name="email" size={25} color={Colors.primary} />
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => Linking.openURL(`tel:${item.pc_mobile}`)}
@@ -73,7 +74,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   container: {
-    marginTop: 10,
     backgroundColor: "white",
     height: "100%",
     width: "100%",
