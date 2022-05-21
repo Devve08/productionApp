@@ -22,10 +22,10 @@ export default function CityGuideList({ navigation }) {
           <Icon name="arrow-right-alt" size={22} />
         </TouchableOpacity>
       </RowSpaceContainer>
-      <View style={{ height: 160, width: "100%" }}>
+      <View style={{ height: 160, width: "100%", marginBottom: 20 }}>
         <FlatList
           horizontal={true}
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%"}}
           data={data}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => (

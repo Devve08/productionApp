@@ -7,7 +7,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Switch,
   Pressable,
   ImageBackground
 } from "react-native";

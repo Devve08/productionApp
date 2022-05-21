@@ -6,58 +6,86 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image
+  Linking
 } from "react-native";
 import SessionContext from "../context/SessionContext";
 import * as FileSystem from 'expo-file-system';
-import shorthash from "shorthash";
+import * as ImagePicker from 'expo-image-picker'
+import * as MediaLibrary from 'expo-media-library';
+
 
 
 export default function ProjectFiles(props) {
   const { getListOfProjectFiles } = useContext(SessionContext);
-  const [source, setSource] = useState(null)
-  const img = 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fhuppyz.com%2Fwp-content%2Fuploads%2F2021%2F08%2FGoogle-Update-Link-Spam-2021.jpg&imgrefurl=https%3A%2F%2Fhuppyz.com%2Fgoogle-link-spam-update%2F&tbnid=dZzg9nWz7FUNjM&vet=12ahUKEwj3kMuC_e73AhXFQfEDHbC6BgcQMygRegUIARD4AQ..i&docid=uywJtsCD9EWHXM&w=5865&h=3672&q=google&ved=2ahUKEwj3kMuC_e73AhXFQfEDHbC6BgcQMygRegUIARD4AQ'
   const [projectFiles, setProjectFiles] = useState([]);
+  const [permission, setPermission] = useState(null)
   let project_id = props.route.params.project_id;
 
+  
 
-  const imageInfo = async(uri) => {
-    const name = shorthash.unique(uri)
-    const path = `${FileSystem.cacheDirectory}${name}`
-    const image = await FileSystem.getInfoAsync(path)
-    console.log(name)
-    // if(image.exists){
-    //   setSource(image.uri)
-    //   console.log("not new", source)
-    // }
-    // else{
-      const newImage = await FileSystem.downloadAsync(uri, FileSystem.documentDirectory)
-      
-      setSource(newImage.uri)
-      console.log("new", FileSystem.documentDirectory)
-    // }
+ const downloadFile = async() => {
+ 
+ 
+  
+  if (permission != 'granted') {
+    console.log('eh')
   }
+  else{
+    const uri = 'https://media.istockphoto.com/photos/mountain-landscape-picture-id517188688?k=20&m=517188688&s=612x612&w=0&h=i38qBm2P-6V4vZVEaMy_TaTEaoCMkYhvLCysE7yJQ5Q='
+    const filename="istockphoto-517188688-612x612.jpg"
+    const fileUri = `${FileSystem.documentDirectory}`;
+    const downloadedFile = FileSystem.downloadAsync(uri, fileUri)
+    .then(res=> console.log(res))
+    .catch(err => console.log(err))
+    
+    const asset = await MediaLibrary.createAssetAsync(downloadedFile.uri + filename);
+    
+    // const album = await MediaLibrary.getAlbumAsync('Downloads');
+    // console.log('hello', asset)
+    // if (album == null) {
+    //   await MediaLibrary.createAlbumAsync('Download', asset, false);
+    // } else {
+    //   await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
+    // }
+
+  }
+ }
+  
+  
+  
   useEffect(async () => {
+    // const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync()
+    // const {stat} = await ImagePicker.requestCameraPermissionsAsync()
+    
+    // setPermission(status)
     let res = await getListOfProjectFiles(project_id);
     setProjectFiles(res.project_files_array);
-    // console.log("w",res);
   }, []);
+
+  const openPDF = (link) => {
+    try {
+      Linking.openURL(link)
+    } catch (error) {
+      console.log(error.message)
+    }
+     
+  }
   return (
     <View style={styles.container}>
-      <Image style={{width:150, height: 150}} source={source}/>
       {projectFiles && (
         <FlatList
           keyExtractor={(item, index) => index}
           data={projectFiles}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={()=> imageInfo(img)} style={styles.btnProject}>
-              <View>
+            <TouchableOpacity onPress={()=>openPDF(item.project_img_logo)} style={styles.btnProject}>
+              <View >
                 <Text style={styles.titleText}>{item.pf_file_label}</Text>
-                <Text style={{ fontSize: 16, paddingHorizontal: 10 }}>
+                
+                {item.pf_creation_date ? (<Text style={{ fontSize: 16, paddingHorizontal: 10 }}>
                   {item.pf_creation_date ? item.pf_creation_date : null}
-                </Text>
+                </Text>) : null }
               </View>
-              <View>
+              <View >
                 <Fontisto name="download" size={30} />
               </View>
             </TouchableOpacity>
@@ -74,22 +102,22 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomColor: "black",
     borderBottomWidth: 1,
-    width: "100%",
-    paddingHorizontal: 10 ,
-    height: 60,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    height:'auto',
+    width:320,
+    paddingVertical:10,
+   flexDirection: "row",
+   justifyContent: "space-between",
+    alignItems: "center"
   },
   container: {
+    flex: 1,
     paddingTop:20,
+    paddingHorizontal:10,
     backgroundColor: "white",
-    height: "100%",
-    width: "100%",
+    alignItems: "center"
   },
-  titleText: {
-    fontSize: 17,
-    fontWeight: "bold",
-    paddingHorizontal: 10,
-  },
+ titleText: {
+   width: 250,
+   fontSize: 16
+ }
 });
