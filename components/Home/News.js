@@ -16,16 +16,15 @@ export default function News({navigation}) {
   useEffect( async ()=>{
     const res = await getNewsInfo()
     setNews(res.news_array)
-    console.log(res)
   },[])
   return (
     <View>
     <RowSpaceContainer>
       <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5 }}>
-        Recent Work
+        News
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Projects")}
+        onPress={() => navigation.navigate("AllNews")}
         style={{ flexDirection: "row", alignItems: "center" }}
       >
         <Text>View all</Text>

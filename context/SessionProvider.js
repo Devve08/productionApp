@@ -96,6 +96,24 @@ export default function SessionProvider({ children }) {
     return res
   }
 
+  const getCategoriesList = async () => {
+    let member_id = session.user.user_id;
+    let g_hash = session.user.g_hash;
+    let params = {member_id, g_hash};
+    let res = await getRequest(params, "request/api/getlistategories")
+    return res
+  }
+
+  const getListPlaces = async (id) => {
+    let member_id = session.user.user_id;
+    let g_hash = session.user.g_hash;
+    let fk_category_id = id
+    let params = {member_id, g_hash, fk_category_id};
+
+    let res = await getRequest(params, "request/api/getlistplaces")
+    return res
+  }
+
   const getListOfContacts = async (id) => {
     let member_id = session.user.user_id;
     let g_hash = session.user.g_hash;
@@ -219,7 +237,9 @@ export default function SessionProvider({ children }) {
     getListOfAppointments,
     getListOfContacts,
     getListOfProjectFiles,
-    getNewsInfo
+    getNewsInfo,
+    getCategoriesList,
+    getListPlaces
   };
 
   return (

@@ -20,6 +20,7 @@ export default function Projects({ navigation }) {
 
   useEffect(() => {
     getProjectsList()
+    console.log('projects', projectsList)
   }, []);
   return (
     <View style={styles.container}>
@@ -28,7 +29,6 @@ export default function Projects({ navigation }) {
         <Entypo name="list" color={view === 0 ? Colors.primary : Colors.black} size={40} />
       </Pressable>
         <Pressable style={styles.tab}  onPress={()=>setView(1)}>
-        
         <Entypo name="grid" color={view === 1 ? Colors.primary : Colors.black} size={40} />
       </Pressable>
       </View> 
@@ -63,7 +63,7 @@ export default function Projects({ navigation }) {
               }
               style={styles.thumbnail}
             >
-              <ImageBackground source={item.image ? item.image : defaultImage} style={{ width: "100%", height: "100%" }}>
+              <ImageBackground source={{uri: item.project_img_logo}} style={{ width: "100%", height: "100%" }}>
                 <LinearGradient
                   colors={["#00000000", "#000011"]}
                   style={styles.linear}

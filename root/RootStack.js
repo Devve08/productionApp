@@ -17,9 +17,10 @@ import ProjectFiles from "../screens/ProjectFiles";
 import Contacts from "../screens/Contacts";
 import { useContext, useState, useEffect } from "react";
 import Loading from "../screens/Loading";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import SessionContext from "../context/SessionContext";
 import SingleNewsScreen from "../screens/SingleNewsScreen";
+import AllNews from "../screens/AllNews";
+import HotelsList from "../screens/HotelsList";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -80,6 +81,24 @@ function DrawerStack() {
           },
         }}
       />
+      <Drawer.Screen
+        name="AllNews"
+        component={AllNews}
+        options={{
+          title: "News",
+          headerShown: true,
+          drawerIcon: ({ color }) => (
+            <FontAwesome name="newspaper" size={22} color={color} />
+          ),
+          headerTitleStyle:{
+            textDecorationLine: 'line-through'
+          },
+          headerStyle: {
+            backgroundColor: "white",
+          },
+        }}
+      />
+  
     </Drawer.Navigator>
   );
 }
@@ -121,6 +140,15 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
                 }, }}
               name="Project"
               component={Project}
+            />
+            <Stack.Screen
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>List of Hotels</Text>
+                }, }}
+              name="HotelsList"
+              component={HotelsList}
             />
             <Stack.Screen
               options={{ headerShown: true,  
