@@ -21,8 +21,10 @@ const { primary, secondary, light, darkLight, white, black} = Colors;
 
 export const Container = styled.View`
     flex: 1;
+    height: 100%;
     padding: 20px 20px;
     background-color: white;
+    justify-content: space-between
 `
 export const StyledContainer = styled.View`
     flex: 1;
@@ -45,8 +47,8 @@ export const InnerContainer = styled.View`
 `
 
 export const PageLogo = styled.Image`
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
 `
 
 export const PageTitle = styled.Text`

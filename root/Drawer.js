@@ -14,6 +14,7 @@ import SessionContext from "../context/SessionContext";
 export default function DrawerContent(props) {
   const {
     actions: { Logout },
+    isLoggedIn
   } = useContext(SessionContext);
 
   return (
@@ -24,16 +25,17 @@ export default function DrawerContent(props) {
           style={{
             alignItems: "center",
             justifyContent: "center",
-            marginVertical: 40,
+            marginVertical: 20,
           }}
         >
           <Image
             source={require("../assets/images/1978.png")}
             style={{
-              width: 120,
-              height: 120,
-              borderRadius: 40,
+              width: 170,
+              height: 150,
+              borderRadius:10,
               marginBottom: 10,
+              resizeMode: 'contain'
             }}
           />
           <Text
@@ -43,7 +45,7 @@ export default function DrawerContent(props) {
 
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
+     {isLoggedIn?  <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
         <TouchableOpacity onPress={Logout} style={{ paddingVertical: 15 }}>
           <View style={{ flexDirection: "row" }}>
             <Ionicons name="exit-outline" size={22} color={Colors.darkLight} />
@@ -54,7 +56,7 @@ export default function DrawerContent(props) {
             </Text>
           </View>
         </TouchableOpacity>
-      </View>
+      </View>: null}
     </View>
   );
 }

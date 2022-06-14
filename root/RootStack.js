@@ -25,7 +25,8 @@ import HotelsList from "../screens/HotelsList";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
-function DrawerStack() {
+function DrawerStack({navigation}) {
+  const {isLoading, isLoggedIn} = useContext(SessionContext)
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -38,7 +39,7 @@ function DrawerStack() {
           fontSize: 16,
         },
       }}
-      drawerContent={(props) => <DrawerContent {...props} />}
+      drawerContent={(props) => <DrawerContent navigation={navigation} {...props} />}
     >
       <Drawer.Screen
         name="Home"
@@ -46,10 +47,7 @@ function DrawerStack() {
         options={{
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={22} color={color} />
-          ),
-          headerTitleStyle:{
-            textDecorationLine: 'line-through'
-          }
+          )
         }}
       />
       <Drawer.Screen
@@ -58,24 +56,18 @@ function DrawerStack() {
         options={{
           drawerIcon: ({ color }) => (
             <FontAwesome name="city" size={22} color={color} />
-          ),
-          headerTitleStyle:{
-            textDecorationLine: 'line-through'
-          }
+          )
         }}
       />
       <Drawer.Screen
         name="Projects"
-        component={Projects}
+        component={isLoggedIn?  Projects : Login}
         options={{
           title: "Projects",
-          headerShown: true,
+          headerShown: isLoggedIn?  true : false,
           drawerIcon: ({ color }) => (
             <FontAwesome name="project-diagram" size={22} color={color} />
           ),
-          headerTitleStyle:{
-            textDecorationLine: 'line-through'
-          },
           headerStyle: {
             backgroundColor: "white",
           },
@@ -83,16 +75,13 @@ function DrawerStack() {
       />
       <Drawer.Screen
         name="AllNews"
-        component={AllNews}
+        component={isLoggedIn? AllNews : Login}
         options={{
           title: "News",
-          headerShown: true,
+          headerShown: isLoggedIn? true : false,
           drawerIcon: ({ color }) => (
             <FontAwesome name="newspaper" size={22} color={color} />
           ),
-          headerTitleStyle:{
-            textDecorationLine: 'line-through'
-          },
           headerStyle: {
             backgroundColor: "white",
           },
@@ -126,7 +115,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               options={{ 
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Calendar</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Calendar</Text>
                 },
            }}
               name="Calendar"
@@ -136,7 +125,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               options={{ 
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Project</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Project</Text>
                 }, }}
               name="Project"
               component={Project}
@@ -145,7 +134,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               options={{ 
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>List of Hotels</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
                 }, }}
               name="HotelsList"
               component={HotelsList}
@@ -153,7 +142,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
             <Stack.Screen
               options={{ headerShown: true,  
                 headerTitle: () => {
-                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Project Files</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Project Files</Text>
                 },}}
               name="ProjectFiles"
               component={ProjectFiles}
@@ -161,7 +150,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
             <Stack.Screen
               options={{ headerShown: true,   
                 headerTitle: () => {
-                  return <Text style={{textDecorationLine: 'line-through', fontSize:18, fontWeight: 'bold'}}>Contacts</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Contacts</Text>
                 }, }}
               name="Contacts"
               component={Contacts}
@@ -173,6 +162,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
             />
           </>
         ) : (
+          <>
           <Stack.Screen
             options={{
               headerShown: true,
@@ -183,6 +173,22 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
             name="Login"
             component={Login}
           />
+          <Stack.Screen
+              options={{ headerShown: false }}
+              name="Welcome"
+              component={DrawerStack}
+            />
+             <Stack.Screen
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
+                }, }}
+              name="HotelsList"
+              component={HotelsList}
+            />
+            </>
+            
         )}
       </Stack.Navigator>
     </NavigationContainer>

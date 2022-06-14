@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import image from "../../assets/images/city.jpg";
+import SessionContext from "../../context/SessionContext";
 import { RowSpaceContainer } from "../../Styles/styles";
 import FlatlistComponent from "./FlatlistComponent";
 
 const data = ["Restaurant 1", "Restaurant 2", "Restaurant 3", "Restaurant 4"];
 
 export default function CityGuideList({ navigation }) {
+  const [categoryList, setCategories] = useState([])
+  const { getCategoriesList, getListPlaces } = useContext(SessionContext);
+
+  const getCatInfo = async (id, hotelName) => {
+    let res = await getListPlaces(id)
+    navigation.navigate('HotelsList', {hotels: res.hotels_array, hotelName})
+    
+  }
+  
+  useEffect(async()=>{
+    const res = await getCategoriesList()
+    setCategories(res.categories_array)
+  },[])
   return (
     <View>
       <RowSpaceContainer>
@@ -26,10 +40,10 @@ export default function CityGuideList({ navigation }) {
         <FlatList
           horizontal={true}
           style={{ width: "100%", height: "100%"}}
-          data={data}
-          keyExtractor={(item, index) => index}
-          renderItem={({ item }) => (
-            <FlatlistComponent restaurant={true}  title={item} />
+          data={categoryList}
+          keyExtractor={(item, _index) => _index}
+          renderItem={({ item, index }) => (
+            <FlatlistComponent onPress={()=>getCatInfo(item.pv_id, item.pv_category_title)} image={item.pv_profile} restaurant={true}  title={item.pv_category_title} />
           )}
         />
       </View>

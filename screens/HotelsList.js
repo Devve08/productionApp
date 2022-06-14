@@ -13,7 +13,6 @@ export default function HotelsList({navigation, route}) {
     }
 
     useEffect(()=> {
-        console.log('hotels', hotels)
     }, [])
   return (
     <View style={styles.container}>
@@ -28,7 +27,7 @@ export default function HotelsList({navigation, route}) {
             setHotel(item)
         }} key={index} style={styles.newsContainer}>
             <Image style={styles.image} source={{uri: item.hotel_profile}} />
-            <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item.h_hotel_city}</Text>
+            <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item.h_hotel_name}</Text>
         </TouchableOpacity>
     )}
     /> 

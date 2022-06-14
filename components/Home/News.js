@@ -39,12 +39,13 @@ export default function News({navigation}) {
           data={news}
           keyExtractor={(item, index) => index}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() =>
-              navigation.navigate("SingleNews", { item })
-            } 
-            >
-              <FlatlistComponent title={item.ln_news_title} image={item.news_profile} />
-            </TouchableOpacity>
+         
+              <FlatlistComponent
+               onPress={() =>
+                navigation.navigate("SingleNews", { item })
+              } 
+               title={item.ln_news_title} image={item.news_profile} />
+          
           )}
         />
       )}

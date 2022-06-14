@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons";
 import KeyboardAvoidingWrapper from "../Styles/KeyboardAvoidingWrapper";
 
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import {
   StyledContainer,
   InnerContainer,
@@ -27,6 +27,7 @@ import axios from "axios";
 import getRequest from "../network/network";
 import Loading from "./Loading";
 import SessionContext from "../context/SessionContext";
+import logo from "../assets/images/1978.png"
 
 const { primary, secondary, light, darkLight, white, black } = Colors;
 
@@ -44,17 +45,14 @@ export default function Login({ navigation }) {
       <StyledContainer>
         <StatusBar style="dark" />
         <InnerContainer>
-          <PageLogo
-            resizeMode="cover"
-            source={require("./../assets/images/1978.png")}
-          />
+          <Image style={{width: 300, height: 250, resizeMode: 'contain'}} source={logo} />
           <SubTitle>Account Login</SubTitle>
 
           <StyledFormArea>
             <MyTextInput
-              label={"Email Address"}
+              label={"Username"}
               icon="person"
-              placeholder="example@gmail.com"
+              
               placeholderTextColor={"grey"}
               onChangeText={(text) => setUserName(text)}
               keyBoardType="email-address"
@@ -63,7 +61,7 @@ export default function Login({ navigation }) {
             <MyTextInput
               label={"Password"}
               icon="lock"
-              placeholder="* * * * * *"
+              
               placeholderTextColor={"grey"}
               onChangeText={(text) => setPassword(text)}
               secureTextEntry={hidePassword}
@@ -78,7 +76,7 @@ export default function Login({ navigation }) {
 
             <StyledButton
               google={true}
-              onPress={() => navigation.navigate("Welcome")}
+              onPress={() => navigation.replace("Welcome")}
             >
               <ButtonText>Skip</ButtonText>
             </StyledButton>

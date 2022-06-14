@@ -10,15 +10,24 @@ import { Container } from "../Styles/styles";
 import Loading from "./Loading";
 
 export default function Welcome({ navigation }) {
-//  const {} = useContext(SessionContext);
+
+const {isLoading, isLoggedIn} = useContext(SessionContext)
   return (
     <>
-      <ScrollView>
+    {console.log(isLoggedIn)}
+      <ScrollView style={{flex:1}}>
         <Container>
-          <RecentWork navigation={navigation} />
+          {isLoggedIn? (
+            <>
+            <RecentWork navigation={navigation} />
+            <CityGuideList navigation={navigation} />
+            <News navigation= {navigation} />
+            <Footer />
+            </>
+          ): <>
           <CityGuideList navigation={navigation} />
-          <News navigation= {navigation} />
-          <Footer />
+            <Footer /></> }
+          
         </Container>
       </ScrollView>
     </>

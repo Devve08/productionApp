@@ -1,12 +1,12 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ImageBackground, Text, View, StyleSheet } from "react-native";
+import { ImageBackground, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 
-export default function FlatlistComponent({ title, image, restaurant }) {
+export default function FlatlistComponent({ title, image, restaurant, onPress }) {
   return (
-    <View style={{ width: 200, height: 150, marginRight: 10, marginTop: 5 }}>
+    <TouchableOpacity onPress={onPress} style={{ width: 200, height: 150, marginRight: 10, marginTop: 5 }}>
       <ImageBackground source={{uri:image}} style={{ width: "100%", height: "100%" }}>
         <LinearGradient
           colors={["#00000000", "#000011"]}
@@ -34,7 +34,7 @@ export default function FlatlistComponent({ title, image, restaurant }) {
           </View>
         </LinearGradient>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 }
 
