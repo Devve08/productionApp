@@ -21,7 +21,7 @@
     },
     "android": {
       "package": "com.devve08.testApp",
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icontwo.png",
         "backgroundColor": "#FFFFFF"

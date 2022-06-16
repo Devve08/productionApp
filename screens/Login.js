@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons";
 import KeyboardAvoidingWrapper from "../Styles/KeyboardAvoidingWrapper";
 
-import { View, Image } from "react-native";
+import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
 import {
   StyledContainer,
   InnerContainer,
@@ -41,11 +41,12 @@ export default function Login({ navigation }) {
   } = useContext(SessionContext);
 
   return (
-    <KeyboardAvoidingWrapper>
-      <StyledContainer>
+      <KeyboardAvoidingView style={{ backgroundColor: 'black', height: '100%'}}>
+        <ScrollView style={{ backgroundColor: 'black', height: '100%'}}>
+      <View style={{ backgroundColor: 'black', height: '100%'}}>
         <StatusBar style="dark" />
         <InnerContainer>
-          <Image style={{width: 300, height: 250, resizeMode: 'contain'}} source={logo} />
+          <Image style={{width: 250, height: 200, resizeMode: 'contain'}} source={logo} />
           <SubTitle>Account Login</SubTitle>
 
           <StyledFormArea>
@@ -82,8 +83,10 @@ export default function Login({ navigation }) {
             </StyledButton>
           </StyledFormArea>
         </InnerContainer>
-      </StyledContainer>
-    </KeyboardAvoidingWrapper>
+        </View>
+        </ScrollView>
+        </KeyboardAvoidingView>
+    
   );
 }
 

@@ -2,25 +2,25 @@ import React, {useContext, useEffect, useState} from 'react'
 import { Text, FlatList, TouchableOpacity, Image, StyleSheet, View } from 'react-native'
 import SessionContext from '../context/SessionContext';
 
-export default function CityGuide({navigation}) {
-  const [categories, setCategories] = useState([])
+export default function SubCategories({navigation, route}) {
+  const [subCategories, setSubCategories] = useState([])
   const { getCategoriesList, getListPlaces } = useContext(SessionContext);
+  const categories = route.params.subCategories
 
   const getCatInfo = async (id, hotelName) => {
-    let res = await getCategoriesList(id)
-    navigation.navigate('SubCategories', {subCategories: res.categories_array, hotelName})
+    let res = await getListPlaces(id)
+    navigation.navigate('HotelsList', {hotels: res.hotels_array, hotelName})
     
   }
 
   useEffect(async()=> {
-    const res = await getCategoriesList(0)
-    setCategories(res.categories_array)
+ console.log('cat', categories)
 
   },[])
 
   return (
     <View style={styles.container}>
-        <FlatList 
+        {categories.length > 0 ? <FlatList 
         style={{width: '100%', padding: 20}}
         data={categories}
         keyExtractor={(item, _index)=> _index}
@@ -30,7 +30,7 @@ export default function CityGuide({navigation}) {
                 <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item.pv_category_title}</Text>
             </TouchableOpacity>
         )}
-        />
+        /> : <Text style={{paddingHorizontal: 20, textAlign: 'center'}}>There are no available places in this category at the moment</Text>}
     </View>
   )
 }

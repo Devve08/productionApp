@@ -27,9 +27,10 @@ export const Container = styled.View`
     justify-content: space-between
 `
 export const StyledContainer = styled.View`
-    flex: 1;
     padding: 40px 25px;
+    paddingBottom: 60px;
     background-color: black;
+    height: 100%
 `
 
 export const RowSpaceContainer = styled.View`
@@ -39,16 +40,15 @@ export const RowSpaceContainer = styled.View`
 `
 
 export const InnerContainer = styled.View`
-    flex: 1;
     width: 100%;
     align-items: center;
     height: 100%;
-    background-color: black;
+   
 `
 
 export const PageLogo = styled.Image`
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
 `
 
 export const PageTitle = styled.Text`
@@ -77,7 +77,7 @@ export const StyledTextInput = styled.TextInput`
     padding: 15px 55px;
     border-radius: 5px;
     font-size: 16px;
-    height: 60px;
+    height: 50px;
     margin-bottom: 10px;
     color: ${darkLight};
 `
@@ -107,9 +107,9 @@ export const StyledButton = styled.TouchableOpacity`
     background-color: ${white};
     justify-content: center;
     border-radius: 5px;
-    height: 60px;
+    height: 50px;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 30px;
    
 `
 

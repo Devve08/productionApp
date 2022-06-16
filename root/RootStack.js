@@ -21,6 +21,7 @@ import SessionContext from "../context/SessionContext";
 import SingleNewsScreen from "../screens/SingleNewsScreen";
 import AllNews from "../screens/AllNews";
 import HotelsList from "../screens/HotelsList";
+import SubCategories from "../screens/SubCategories";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -47,7 +48,10 @@ function DrawerStack({navigation}) {
         options={{
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={22} color={color} />
-          )
+          ),
+          headerTitle: () => {
+            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Home</Text>
+          },
         }}
       />
       <Drawer.Screen
@@ -56,18 +60,25 @@ function DrawerStack({navigation}) {
         options={{
           drawerIcon: ({ color }) => (
             <FontAwesome name="city" size={22} color={color} />
-          )
+          ),
+          headerTitle: () => {
+            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>City Guide</Text>
+          },
         }}
       />
+     {isLoggedIn ? <>
       <Drawer.Screen
         name="Projects"
         component={isLoggedIn?  Projects : Login}
         options={{
           title: "Projects",
-          headerShown: isLoggedIn?  true : false,
+          headerShown: true,
           drawerIcon: ({ color }) => (
             <FontAwesome name="project-diagram" size={22} color={color} />
           ),
+          headerTitle: () => {
+            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Projects</Text>
+          },
           headerStyle: {
             backgroundColor: "white",
           },
@@ -75,19 +86,38 @@ function DrawerStack({navigation}) {
       />
       <Drawer.Screen
         name="AllNews"
-        component={isLoggedIn? AllNews : Login}
+        component={AllNews}
         options={{
           title: "News",
-          headerShown: isLoggedIn? true : false,
+          headerShown: true,
           drawerIcon: ({ color }) => (
             <FontAwesome name="newspaper" size={22} color={color} />
           ),
+          headerTitle: () => {
+            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>News</Text>
+          },
           headerStyle: {
             backgroundColor: "white",
           },
         }}
-      />
-  
+      /></> : null}
+      {!isLoggedIn ? <Drawer.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: "Login",
+          headerShown: true,
+          drawerIcon: ({ color }) => (
+            <FontAwesome name="sign-in-alt" size={22} color={color} />
+          ),
+          headerTitle: () => {
+            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Login</Text>
+          },
+          headerStyle: {
+            backgroundColor: Colors.primary,
+          },
+        }}
+      />: null}
     </Drawer.Navigator>
   );
 }
@@ -136,6 +166,15 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
                 headerTitle: () => {
                   return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
                 }, }}
+              name="SubCategories"
+              component={SubCategories}
+            />
+            <Stack.Screen
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
+                }, }}
               name="HotelsList"
               component={HotelsList}
             />
@@ -169,6 +208,9 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               headerStyle: {
                 backgroundColor: Colors.primary,
               },
+              headerTitle: () => {
+                return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Login</Text>
+              },
             }}
             name="Login"
             component={Login}
@@ -187,7 +229,17 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               name="HotelsList"
               component={HotelsList}
             />
+              <Stack.Screen
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
+                }, }}
+              name="SubCategories"
+              component={SubCategories}
+            />
             </>
+            
             
         )}
       </Stack.Navigator>

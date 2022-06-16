@@ -13,13 +13,12 @@ export default function CityGuideList({ navigation }) {
   const { getCategoriesList, getListPlaces } = useContext(SessionContext);
 
   const getCatInfo = async (id, hotelName) => {
-    let res = await getListPlaces(id)
-    navigation.navigate('HotelsList', {hotels: res.hotels_array, hotelName})
-    
+    let res = await getCategoriesList(id)
+    navigation.navigate('SubCategories', {subCategories: res.categories_array, hotelName})
   }
   
   useEffect(async()=>{
-    const res = await getCategoriesList()
+    const res = await getCategoriesList(0)
     setCategories(res.categories_array)
   },[])
   return (

@@ -9,8 +9,8 @@ import {
 export default function KeyboardAvoidingWrapper({ children }) {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }}>
-      <ScrollView>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ScrollView style={{height: '100%'}}>
+        <TouchableWithoutFeedback style={{height: '100%'}} onPress={Keyboard.dismiss}>
           {children}
         </TouchableWithoutFeedback>
       </ScrollView>

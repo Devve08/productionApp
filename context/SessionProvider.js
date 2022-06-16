@@ -96,11 +96,13 @@ export default function SessionProvider({ children }) {
     return res
   }
 
-  const getCategoriesList = async () => {
+  const getCategoriesList = async (id) => {
     let member_id = session.user.user_id;
     let g_hash = session.user.g_hash;
-    let params = {member_id, g_hash};
+    let fk_category_id = id
+    let params = {member_id, g_hash, fk_category_id };
     let res = await getRequest(params, "request/api/getlistategories")
+    console.log('res',res)
     return res
   }
 
@@ -239,7 +241,7 @@ export default function SessionProvider({ children }) {
     getListOfProjectFiles,
     getNewsInfo,
     getCategoriesList,
-    getListPlaces
+    getListPlaces,
   };
 
   return (

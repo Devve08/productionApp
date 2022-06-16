@@ -13,6 +13,7 @@ export default function HotelsList({navigation, route}) {
     }
 
     useEffect(()=> {
+        console.log(hotels)
     }, [])
   return (
     <View style={styles.container}>
@@ -32,7 +33,7 @@ export default function HotelsList({navigation, route}) {
     )}
     /> 
    ): (
-       <Text>There are no available hotels in this category</Text>
+       <Text>There are no available places in this category</Text>
    )}
    <HotelInfoModal item={hotel} modalOpen={modalOpen} closeModal={openModal} />
 </View>
