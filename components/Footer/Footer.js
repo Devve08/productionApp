@@ -5,7 +5,7 @@ import Icon2 from "react-native-vector-icons/SimpleLineIcons";
 
 export default function Footer() {
   return (
-    <View style={{ width: "100%", height: 50, justifyContent: "center", marginTop: 20 }}>
+    <View style={{ width: "100%", height: 50 , marginTop: 20 }}>
       <View
         style={{
           flexDirection: "row",

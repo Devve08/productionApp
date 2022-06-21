@@ -1,6 +1,6 @@
 
 import React, { useState, useContext } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 import Footer from "../components/Footer/Footer";
 import CityGuideList from "../components/Home/CityGuideList";
 import News from "../components/Home/News";
@@ -13,10 +13,10 @@ export default function Welcome({ navigation }) {
 
 const {isLoading, isLoggedIn} = useContext(SessionContext)
   return (
-    <>
-    {console.log(isLoggedIn)}
-      <ScrollView style={{flex:1}}>
-        <Container>
+    
+      
+        <Container >
+          <ScrollView >
           {isLoggedIn? (
             <>
             <RecentWork navigation={navigation} />
@@ -27,9 +27,9 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
           ): <>
           <CityGuideList navigation={navigation} />
             <Footer /></> }
-          
+            </ScrollView>
         </Container>
-      </ScrollView>
-    </>
+      
+    
   );
 }

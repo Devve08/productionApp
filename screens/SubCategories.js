@@ -13,10 +13,7 @@ export default function SubCategories({navigation, route}) {
     
   }
 
-  useEffect(async()=> {
- console.log('cat', categories)
-
-  },[])
+  
 
   return (
     <View style={styles.container}>

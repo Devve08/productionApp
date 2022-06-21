@@ -90,20 +90,20 @@ export const StyledInputLabel = styled.Text`
 
 export const LeftIcon = styled.View`
     left: 15px;
-    top:35px;
+    top:30px;
     position: absolute;
     z-index: 1;
 `
 
 export const RightIcon = styled.TouchableOpacity`
     right: 15px;
-    top:35px;
+    top:30px;
     position: absolute;
     z-index: 1;
 `
 
 export const StyledButton = styled.TouchableOpacity`
-    padding: 15px;
+    padding: 10px;
     background-color: ${white};
     justify-content: center;
     border-radius: 5px;
