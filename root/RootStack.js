@@ -66,7 +66,7 @@ function DrawerStack({navigation}) {
           },
         }}
       />
-     {isLoggedIn ? <>
+     {isLoggedIn && <>
       <Drawer.Screen
         name="Projects"
         component={isLoggedIn?  Projects : Login}
@@ -100,8 +100,8 @@ function DrawerStack({navigation}) {
             backgroundColor: "white",
           },
         }}
-      /></> : null}
-      {!isLoggedIn ? <Drawer.Screen
+      /></> }
+      {!isLoggedIn && <Drawer.Screen
         name="Login"
         component={Login}
         options={{
@@ -117,7 +117,7 @@ function DrawerStack({navigation}) {
             backgroundColor: Colors.primary,
           },
         }}
-      />: null}
+      />}
     </Drawer.Navigator>
   );
 }
@@ -164,7 +164,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               options={{ 
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
                 }, }}
               name="SubCategories"
               component={SubCategories}
@@ -173,7 +173,7 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               options={{ 
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
                 }, }}
               name="HotelsList"
               component={HotelsList}
@@ -220,23 +220,24 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               name="Welcome"
               component={DrawerStack}
             />
-             <Stack.Screen
-              options={{ 
-                headerShown: true,
-                headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
-                }, }}
-              name="HotelsList"
-              component={HotelsList}
-            />
+            
               <Stack.Screen
               options={{ 
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of Hotels</Text>
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
                 }, }}
               name="SubCategories"
               component={SubCategories}
+            />
+             <Stack.Screen
+              options={{ 
+                headerShown: true,
+                headerTitle: () => {
+                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
+                }, }}
+              name="HotelsList"
+              component={HotelsList}
             />
             </>
             

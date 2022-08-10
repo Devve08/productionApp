@@ -15,7 +15,7 @@ export default function CityGuide({navigation}) {
   useEffect(async()=> {
     const res = await getCategoriesList(0)
     setCategories(res.categories_array)
-
+    console.log('going to cat infi')
   },[])
 
   return (

@@ -23,7 +23,7 @@ export const Container = styled.View`
     flex: 1;
     height: 100%;
     padding: 20px 20px;
-    background-color: white;
+    background-color: #edf5e1;
     justify-content: space-between
 `
 export const StyledContainer = styled.View`

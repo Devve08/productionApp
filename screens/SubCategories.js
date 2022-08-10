@@ -8,6 +8,7 @@ export default function SubCategories({navigation, route}) {
   const categories = route.params.subCategories
 
   const getCatInfo = async (id, hotelName) => {
+    
     let res = await getListPlaces(id)
     navigation.navigate('HotelsList', {hotels: res.hotels_array, hotelName})
     
