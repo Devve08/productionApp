@@ -25,18 +25,20 @@ export default function Contacts(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Project Contacts</Text>
-      <View >
+      <View>
         <FlatList
           keyExtractor={(item, index) => index}
           data={contacts}
           renderItem={({ item }) => (
             <View style={styles.btnProject}>
               <View>
-                <View style={{flexDirection: "row", justifyContent: "flex-start"}}>
-                <Text style={styles.titleText}>{item.pc_first_name}</Text>
-                <Text style={styles.titleText}>{item.pc_last_name}</Text>
+                <View
+                  style={{ flexDirection: "row", justifyContent: "flex-start" }}
+                >
+                  <Text style={styles.titleText}>{item.pc_first_name}</Text>
+                  <Text style={styles.titleText}>{item.pc_last_name}</Text>
                 </View>
-                
+
                 <Text style={{ fontSize: 16, paddingHorizontal: 10 }}>
                   {item.pc_occupation}
                 </Text>
@@ -46,7 +48,7 @@ export default function Contacts(props) {
                   onPress={() => Linking.openURL(`mailto:${item.pc_email}`)}
                   style={{ marginRight: 20 }}
                 >
-                  <Icon name="email" size={25} color={Colors.primary} />
+                  <Icon name="email" size={25} color={'black'} />
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => Linking.openURL(`tel:${item.pc_mobile}`)}
@@ -64,17 +66,18 @@ export default function Contacts(props) {
 
 const styles = StyleSheet.create({
   btnProject: {
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
+    backgroundColor: "#d7af43",
     width: "80%",
     height: 60,
     marginHorizontal: 25,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginVertical: 5,
+    paddingHorizontal: 5
   },
   container: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     height: "100%",
     width: "100%",
   },

@@ -20,14 +20,14 @@ export default function News({navigation}) {
   return (
     <View>
     <RowSpaceContainer>
-      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5 }}>
+      <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5, color: '#d7af43' }}>
         News
       </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate("AllNews")}
         style={{ flexDirection: "row", alignItems: "center" }}
       >
-        <Text>View all</Text>
+        <Text style={{color: '#d7af43'}}>View all</Text>
         <Icon name="arrow-right-alt" size={22} />
       </TouchableOpacity>
     </RowSpaceContainer>

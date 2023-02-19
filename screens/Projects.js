@@ -26,10 +26,10 @@ export default function Projects({ navigation }) {
     <View style={styles.container}>
       <View style={styles.tabs}>
       <Pressable style={styles.tab} onPress={()=>setView(0)}>
-        <Entypo name="list" color={view === 0 ? Colors.primary : Colors.black} size={40} />
+        <Entypo name="list" color={view === 0 ? Colors.primary : 'white'} size={40} />
       </Pressable>
         <Pressable style={styles.tab}  onPress={()=>setView(1)}>
-        <Entypo name="grid" color={view === 1 ? Colors.primary : Colors.black} size={40} />
+        <Entypo name="grid" color={view === 1 ? Colors.primary : 'white'} size={40} />
       </Pressable>
       </View> 
       {view === 0 ? projectsList && (
@@ -73,7 +73,7 @@ export default function Projects({ navigation }) {
                   >
                     <View>
                       <Text
-                        style={{ color: "white", fontSize: 18, fontWeight: "bold" }}
+                        style={{ color: '#d7af43', fontSize: 18, fontWeight: "bold" }}
                       >
                         {item.pp_project_label}
                       </Text>
@@ -98,10 +98,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 60,
     justifyContent: "center",
+    backgroundColor: '#d7af43'
   },
   container: {
     paddingTop: 20,
-    backgroundColor: "white",
+    backgroundColor: 'black',
     height: "100%",
     width: "100%",
   },

@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import {Text} from 'react-native'
+import { Text } from "react-native";
 import Login from "./../screens/Login";
 import FontAwesome from "react-native-vector-icons/FontAwesome5";
 import Welcome from "../screens/Welcome";
@@ -26,8 +26,8 @@ import SubCategories from "../screens/SubCategories";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
-function DrawerStack({navigation}) {
-  const {isLoading, isLoggedIn} = useContext(SessionContext)
+function DrawerStack({ navigation }) {
+  const { isLoading, isLoggedIn } = useContext(SessionContext);
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -40,7 +40,9 @@ function DrawerStack({navigation}) {
           fontSize: 16,
         },
       }}
-      drawerContent={(props) => <DrawerContent navigation={navigation} {...props} />}
+      drawerContent={props => (
+        <DrawerContent navigation={navigation} {...props} />
+      )}
     >
       <Drawer.Screen
         name="Home"
@@ -50,7 +52,20 @@ function DrawerStack({navigation}) {
             <Ionicons name="home-outline" size={22} color={color} />
           ),
           headerTitle: () => {
-            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Home</Text>
+            return (
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: "bold",
+                  textDecorationLine: "line-through",
+                }}
+              >
+                Home
+              </Text>
+            );
+          },
+          headerStyle: {
+            backgroundColor: "#d7af43",
           },
         }}
       />
@@ -62,68 +77,116 @@ function DrawerStack({navigation}) {
             <FontAwesome name="city" size={22} color={color} />
           ),
           headerTitle: () => {
-            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>City Guide</Text>
+            return (
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: "bold",
+                  textDecorationLine: "line-through",
+                }}
+              >
+                City Guide
+              </Text>
+            );
+          },
+          headerStyle: {
+            backgroundColor: "#d7af43",
           },
         }}
       />
-     {isLoggedIn && <>
-      <Drawer.Screen
-        name="Projects"
-        component={isLoggedIn?  Projects : Login}
-        options={{
-          title: "Projects",
-          headerShown: true,
-          drawerIcon: ({ color }) => (
-            <FontAwesome name="project-diagram" size={22} color={color} />
-          ),
-          headerTitle: () => {
-            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Projects</Text>
-          },
-          headerStyle: {
-            backgroundColor: "white",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="AllNews"
-        component={AllNews}
-        options={{
-          title: "News",
-          headerShown: true,
-          drawerIcon: ({ color }) => (
-            <FontAwesome name="newspaper" size={22} color={color} />
-          ),
-          headerTitle: () => {
-            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>News</Text>
-          },
-          headerStyle: {
-            backgroundColor: "white",
-          },
-        }}
-      /></> }
-      {!isLoggedIn && <Drawer.Screen
-        name="Login"
-        component={Login}
-        options={{
-          title: "Login",
-          headerShown: true,
-          drawerIcon: ({ color }) => (
-            <FontAwesome name="sign-in-alt" size={22} color={color} />
-          ),
-          headerTitle: () => {
-            return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Login</Text>
-          },
-          headerStyle: {
-            backgroundColor: Colors.primary,
-          },
-        }}
-      />}
+      {isLoggedIn && (
+        <>
+          <Drawer.Screen
+            name="Projects"
+            component={isLoggedIn ? Projects : Login}
+            options={{
+              title: "Projects",
+              headerShown: true,
+              drawerIcon: ({ color }) => (
+                <FontAwesome name="project-diagram" size={22} color={color} />
+              ),
+              headerTitle: () => {
+                return (
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "bold",
+                      textDecorationLine: "line-through",
+                    }}
+                  >
+                    Projects
+                  </Text>
+                );
+              },
+              headerStyle: {
+                backgroundColor: "#d7af43",
+              },
+            }}
+          />
+          <Drawer.Screen
+            name="AllNews"
+            component={AllNews}
+            options={{
+              title: "News",
+              headerShown: true,
+              drawerIcon: ({ color }) => (
+                <FontAwesome name="newspaper" size={22} color={color} />
+              ),
+              headerTitle: () => {
+                return (
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: "bold",
+                      textDecorationLine: "line-through",
+                    }}
+                  >
+                    News
+                  </Text>
+                );
+              },
+              headerStyle: {
+                backgroundColor: "#d7af43",
+              },
+            }}
+          />
+        </>
+      )}
+      {!isLoggedIn && (
+        <Drawer.Screen
+          name="Login"
+          component={Login}
+          options={{
+            title: "Login",
+            headerShown: true,
+            drawerIcon: ({ color }) => (
+              <FontAwesome name="sign-in-alt" size={22} color={color} />
+            ),
+            headerTitle: () => {
+              return (
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    textDecorationLine: "line-through",
+                  }}
+                >
+                  Login
+                </Text>
+              );
+            },
+            headerStyle: {
+              backgroundColor: "#d7af43",
+            },
+          }}
+        />
+      )}
     </Drawer.Navigator>
   );
 }
 
 export default function RootStack() {
-const {isLoading, isLoggedIn} = useContext(SessionContext)
+  const { isLoading, isLoggedIn } = useContext(SessionContext);
 
   return (
     <NavigationContainer>
@@ -142,106 +205,224 @@ const {isLoading, isLoggedIn} = useContext(SessionContext)
               component={DrawerStack}
             />
             <Stack.Screen
-              options={{ 
+              options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Calendar</Text>
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      Calendar
+                    </Text>
+                  );
                 },
-           }}
+                headerStyle: {
+                  backgroundColor: '#d7af43'
+                }
+              }}
               name="Calendar"
               component={Calendar}
             />
             <Stack.Screen
-              options={{ 
+              options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Project</Text>
-                }, }}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      Project
+                    </Text>
+                  );
+                },
+              }}
               name="Project"
               component={Project}
             />
             <Stack.Screen
-              options={{ 
+              options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
-                }, }}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      List of places
+                    </Text>
+                  );
+                },
+                headerStyle: {
+                  backgroundColor: "#d7af43",
+                },
+              }}
               name="SubCategories"
               component={SubCategories}
             />
             <Stack.Screen
-              options={{ 
+              options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
-                }, }}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      List of places
+                    </Text>
+                  );
+                },
+                headerStyle: {
+                  backgroundColor: "#d7af43",
+                },
+              }}
               name="HotelsList"
               component={HotelsList}
             />
             <Stack.Screen
-              options={{ headerShown: true,  
+              options={{
+                headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Project Files</Text>
-                },}}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      Project Files
+                    </Text>
+                  );
+                },
+                headerStyle: {
+                  backgroundColor: "#d7af43"
+                }
+              }}
               name="ProjectFiles"
               component={ProjectFiles}
             />
             <Stack.Screen
-              options={{ headerShown: true,   
+              options={{
+                headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Contacts</Text>
-                }, }}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      Contacts
+                    </Text>
+                  );
+                },
+                headerStyle: {
+                  backgroundColor: "#d7af43"
+                }
+              }}
               name="Contacts"
               component={Contacts}
             />
             <Stack.Screen
-              options={{ headerShown: false}}
+              options={{ headerShown: false }}
               name="SingleNews"
               component={SingleNewsScreen}
             />
           </>
         ) : (
           <>
-          <Stack.Screen
-            options={{
-              headerShown: true,
-              headerStyle: {
-                backgroundColor: Colors.primary,
-              },
-              headerTitle: () => {
-                return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>Login</Text>
-              },
-            }}
-            name="Login"
-            component={Login}
-          />
-          <Stack.Screen
+            <Stack.Screen
+              options={{
+                headerShown: true,
+                headerStyle: {
+                  backgroundColor: "#d7af43",
+                },
+                headerTitle: () => {
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      Login
+                    </Text>
+                  );
+                },
+              }}
+              name="Login"
+              component={Login}
+            />
+            <Stack.Screen
               options={{ headerShown: false }}
               name="Welcome"
               component={DrawerStack}
             />
-            
-              <Stack.Screen
-              options={{ 
+
+            <Stack.Screen
+              options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
-                }, }}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      List of places
+                    </Text>
+                  );
+                },
+                headerStyle: {
+                  backgroundColor: "#d7af43",
+                },
+              }}
               name="SubCategories"
               component={SubCategories}
             />
-             <Stack.Screen
-              options={{ 
+            <Stack.Screen
+              options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return <Text style={{ fontSize:18, fontWeight: 'bold', textDecorationLine: "line-through"}}>List of places</Text>
-                }, }}
+                  return (
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        fontWeight: "bold",
+                        textDecorationLine: "line-through",
+                      }}
+                    >
+                      List of places
+                    </Text>
+                  );
+                },
+                headerStyle: {
+                  backgroundColor: "#d7af43",
+                },
+              }}
               name="HotelsList"
               component={HotelsList}
             />
-            </>
-            
-            
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

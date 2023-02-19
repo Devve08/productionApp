@@ -41,10 +41,11 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       width: '100%',
-      flex: 1
+      flex: 1,
+      backgroundColor: 'black'
   },
   newsContainer: {
-      backgroundColor: '#FFFFFF', 
+      backgroundColor: '#d7af43', 
       height: 75, width: '100%', 
       marginBottom: 10,
       flexDirection: 'row',

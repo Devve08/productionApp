@@ -18,7 +18,7 @@ export default function DrawerContent(props) {
   } = useContext(SessionContext);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ backgroundColor: '#d7af43', flex: 1 }}>
       <StatusBar style="dark" />
       <DrawerContentScrollView {...props}>
         <View
@@ -26,6 +26,7 @@ export default function DrawerContent(props) {
             alignItems: "center",
             justifyContent: "center",
             marginVertical: 20,
+            
           }}
         >
           <Image

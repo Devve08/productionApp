@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
-        flex: 1
+        flex: 1,
+        backgroundColor: "#d7af43"
     },
     newsContainer: {
         backgroundColor: '#FFFFFF', 

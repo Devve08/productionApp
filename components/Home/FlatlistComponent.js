@@ -1,35 +1,47 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { ImageBackground, Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  ImageBackground,
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-
-export default function FlatlistComponent({ title, image, restaurant, onPress }) {
+export default function FlatlistComponent({
+  title,
+  image,
+  restaurant,
+  onPress,
+}) {
   return (
-    <TouchableOpacity onPress={onPress} style={{ width: 200, height: 150, marginRight: 10, marginTop: 5 }}>
-      <ImageBackground source={{uri:image}} style={{ width: "100%", height: "100%" }}>
-        <LinearGradient
-          colors={["#00000000", "#000011"]}
-          style={styles.linear}
-        >
-          <View
-            style={styles.textView}
-          >
+    <TouchableOpacity
+      onPress={onPress}
+      style={{ width: 200, height: 150, marginRight: 10, marginTop: 5 }}
+    >
+      <ImageBackground
+        source={{ uri: image }}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <LinearGradient colors={["#00000000", "#000011"]} style={styles.linear}>
+          <View style={styles.textView}>
             {restaurant ? (
               <Icon
                 name="local-restaurant"
-                color={"black"}
+                color={'#d7af43'}
+                backgroundColor={'#d7af43'}
                 style={styles.icon}
                 size={25}
               />
             ) : null}
             <View>
               <Text
-                style={{ color: "white", fontSize: 18, fontWeight: "bold" }}
+                style={{ color: "#d7af43", fontSize: 18, fontWeight: "bold" }}
               >
                 {title}
               </Text>
-              <Text style={{ color: "white" }}>{title}</Text>
+              <Text style={{ color: "#d7af43" }}>{title}</Text>
             </View>
           </View>
         </LinearGradient>
@@ -37,7 +49,6 @@ export default function FlatlistComponent({ title, image, restaurant, onPress })
     </TouchableOpacity>
   );
 }
-
 
 const styles = StyleSheet.create({
   linear: {
@@ -58,5 +69,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
     marginHorizontal: 10,
-  }
-})
+  },
+});

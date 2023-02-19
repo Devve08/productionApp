@@ -24,14 +24,14 @@ export default function RecentWork({ navigation }) {
   return (
     <View>
       <RowSpaceContainer>
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5 }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5, color: '#d7af43' }}>
           Recent Work
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("Projects")}
           style={{ flexDirection: "row", alignItems: "center" }}
         >
-          <Text>View all</Text>
+          <Text style={{color: '#d7af43'}}>View all</Text>
           <Icon name="arrow-right-alt" size={22} />
         </TouchableOpacity>
       </RowSpaceContainer>

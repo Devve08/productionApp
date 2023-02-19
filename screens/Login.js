@@ -27,7 +27,7 @@ import axios from "axios";
 import getRequest from "../network/network";
 import Loading from "./Loading";
 import SessionContext from "../context/SessionContext";
-import logo from "../assets/images/1978.png"
+import logo from "../assets/images/1978.png";
 
 const { primary, secondary, light, darkLight, white, black } = Colors;
 
@@ -41,52 +41,54 @@ export default function Login({ navigation }) {
   } = useContext(SessionContext);
 
   return (
-      <KeyboardAvoidingView style={{ backgroundColor: 'black', height: '100%'}}>
-        <ScrollView style={{ backgroundColor: 'black', height: '100%'}}>
-      <View style={{ backgroundColor: 'black', height: '100%'}}>
-        <StatusBar style="dark" />
-        <InnerContainer>
-          <Image style={{width: 250, height: 200, resizeMode: 'contain'}} source={logo} />
-          <SubTitle>Account Login</SubTitle>
-
-          <StyledFormArea>
-            <MyTextInput
-              label={"Username"}
-              icon="person"
-              
-              placeholderTextColor={"grey"}
-              onChangeText={(text) => setUserName(text)}
-              keyBoardType="email-address"
+    <KeyboardAvoidingView
+      style={{ backgroundColor: "#d7af43", height: "100%" }}
+    >
+      <ScrollView style={{ backgroundColor: "#d7af43", height: "100%" }}>
+        <View style={{ backgroundColor: "#d7af43", height: "100%" }}>
+          <StatusBar style="dark" />
+          <InnerContainer>
+            <Image
+              style={{ width: 250, height: 200, resizeMode: "contain" }}
+              source={logo}
             />
+            <SubTitle>Account Login</SubTitle>
 
-            <MyTextInput
-              label={"Password"}
-              icon="lock"
-              
-              placeholderTextColor={"grey"}
-              onChangeText={(text) => setPassword(text)}
-              secureTextEntry={hidePassword}
-              hidePassword={hidePassword}
-              setHidePassword={setHidePassword}
-              isPassword={true}
-            />
-            {error && <MsgBox>Something went wrong, try again!</MsgBox>}
-            <StyledButton onPress={() => Login(username, password)}>
-              <ButtonText>Login</ButtonText>
-            </StyledButton>
+            <StyledFormArea>
+              <MyTextInput
+                label={"Username"}
+                icon="person"
+                placeholderTextColor={"grey"}
+                onChangeText={text => setUserName(text)}
+                keyBoardType="email-address"
+              />
 
-            <StyledButton
-              google={true}
-              onPress={() => navigation.replace("Welcome")}
-            >
-              <ButtonText>Skip</ButtonText>
-            </StyledButton>
-          </StyledFormArea>
-        </InnerContainer>
+              <MyTextInput
+                label={"Password"}
+                icon="lock"
+                placeholderTextColor={"grey"}
+                onChangeText={text => setPassword(text)}
+                secureTextEntry={hidePassword}
+                hidePassword={hidePassword}
+                setHidePassword={setHidePassword}
+                isPassword={true}
+              />
+              {error && <MsgBox>Something went wrong, try again!</MsgBox>}
+              <StyledButton onPress={() => Login(username, password)}>
+                <ButtonText>Login</ButtonText>
+              </StyledButton>
+
+              <StyledButton
+                google={true}
+                onPress={() => navigation.replace("Welcome")}
+              >
+                <ButtonText>Skip</ButtonText>
+              </StyledButton>
+            </StyledFormArea>
+          </InnerContainer>
         </View>
-        </ScrollView>
-        </KeyboardAvoidingView>
-    
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -101,7 +103,7 @@ const MyTextInput = ({
   return (
     <View>
       <LeftIcon>
-        <Octicons name={icon} size={30} color={black} />
+        <Octicons name={icon} size={30} color={'#d7af43'} />
       </LeftIcon>
       <StyledInputLabel>{label}</StyledInputLabel>
       <StyledTextInput {...props} />
@@ -110,7 +112,7 @@ const MyTextInput = ({
           <Ionicons
             name={hidePassword ? "md-eye-off" : "md-eye"}
             size={30}
-            color={black}
+            color={'#d7af43'}
           />
         </RightIcon>
       )}

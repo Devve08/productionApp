@@ -23,7 +23,7 @@ export const Container = styled.View`
     flex: 1;
     height: 100%;
     padding: 20px 20px;
-    background-color: #edf5e1;
+    background-color: black;
     justify-content: space-between
 `
 export const StyledContainer = styled.View`
@@ -65,7 +65,7 @@ export const SubTitle = styled.Text`
     margin-top: 20px;
     letter-spacing: 1px;
     font-weight: bold;
-    color: ${white};
+    color: black;
 `
 
 export const StyledFormArea = styled.View`
@@ -73,17 +73,17 @@ export const StyledFormArea = styled.View`
 `
 
 export const StyledTextInput = styled.TextInput`
-    background-color : ${light};
+    background-color : black;
     padding: 15px 55px;
     border-radius: 5px;
     font-size: 16px;
     height: 50px;
     margin-bottom: 10px;
-    color: ${darkLight};
+    color: #d7af43;
 `
 
 export const StyledInputLabel = styled.Text`
-    color: ${white};
+    color: black;
     font-size: 13px;
     text-align: left;
 `
@@ -104,7 +104,7 @@ export const RightIcon = styled.TouchableOpacity`
 
 export const StyledButton = styled.TouchableOpacity`
     padding: 10px;
-    background-color: ${white};
+    background-color: black;
     justify-content: center;
     border-radius: 5px;
     height: 50px;
@@ -114,7 +114,7 @@ export const StyledButton = styled.TouchableOpacity`
 `
 
 export const ButtonText = styled.Text`
-    color: black;
+    color: #d7af43;
     font-weight: bold;
     font-size: 17px;
     ${(props)=> props.google == true ? `

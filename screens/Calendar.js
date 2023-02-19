@@ -20,17 +20,14 @@ export default class App extends Component {
   }
 
   checkDate(date) {
-
-    let result = this.state.aptArray.filter(
-      (item) => item.pa_apt_date === date
-    );
+    let result = this.state.aptArray.filter(item => item.pa_apt_date === date);
     if (result.length > 0) {
       this.getAppointmentInfo(result[0].pa_id);
-      this.setState({ appointmentModalOpen: true })
+      this.setState({ appointmentModalOpen: true });
     }
   }
 
-  getAppointmentInfo = async (id) => {
+  getAppointmentInfo = async id => {
     try {
       let member_id = this.context.session.user.user_id;
       let g_hash = this.context.session.user.g_hash;
@@ -38,19 +35,22 @@ export default class App extends Component {
       let pa_id = id;
       let params = { member_id, g_hash, pa_id, access_token };
       let res = await getRequest(params, "request/api/getappointmentinfo");
-      this.setState({ appointmentInfo: res.apt_array })
+      this.setState({ appointmentInfo: res.apt_array });
     } catch (error) {
       console.log(error.message);
     }
   };
 
   closeModal() {
-    this.setState({ appointmentModalOpen: false })
+    this.setState({ appointmentModalOpen: false });
   }
   getMarkedDates() {
     let dates = {};
-    this.state.aptArray.forEach((val) => {
-      dates[val.pa_apt_date] = { selected: true, selectedColor: Colors.primary };
+    this.state.aptArray.forEach(val => {
+      dates[val.pa_apt_date] = {
+        selected: true,
+        selectedColor: Colors.primary,
+      };
     });
     this.setState({ selectedAptDates: dates });
   }
@@ -59,7 +59,7 @@ export default class App extends Component {
     const { getListOfAppointments } = this.context;
     let id = this.props.route.params.pp_id;
     const res = await getListOfAppointments(id);
-    res.apt_array.map((item) =>
+    res.apt_array.map(item =>
       this.setState({ aptArray: [...this.state.aptArray, item] })
     );
 
@@ -71,9 +71,16 @@ export default class App extends Component {
       <View style={styles.container}>
         {/* {console.log(this.state.aptArray)} */}
         <Calendar
-          onDayPress={(day) => this.checkDate(day.dateString)}
+          onDayPress={day => this.checkDate(day.dateString)}
           markedDates={selectedAptDates}
-          theme={{arrowColor: Colors.primary, todayTextColor: Colors.primary}}
+          theme={{
+            arrowColor: Colors.primary,
+            todayTextColor: Colors.primary,
+            calendarBackground: 'black',
+            backgroundColor: "black",
+            dayTextColor: "white",
+            monthTextColor: 'white'
+          }}
         />
         <View>
           <TouchableOpacity
@@ -100,7 +107,8 @@ export default class App extends Component {
         <AppointmentModal
           closeModal={() => this.setState({ appointmentModalOpen: false })}
           appointmentModalOpen={this.state.appointmentModalOpen}
-          appointmentInfo={this.state.appointmentInfo} />
+          appointmentInfo={this.state.appointmentInfo}
+        />
       </View>
     );
   }
@@ -109,19 +117,19 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "black",
     paddingTop: 50,
   },
   btn: {
     width: 200,
     marginHorizontal: 80,
-    backgroundColor: "black",
+    backgroundColor: "#d7af43",
     paddingHorizontal: 20,
     paddingVertical: 20,
     marginBottom: 10,
     alignItems: "center",
   },
   btnText: {
-    color: "#FFFFFF",
+    color: "black",
   },
 });
