@@ -66,7 +66,7 @@ export default function Contacts(props) {
 
 const styles = StyleSheet.create({
   btnProject: {
-    backgroundColor: "#d7af43",
+    backgroundColor: "#D7AF43",
     width: "80%",
     height: 60,
     marginHorizontal: 25,

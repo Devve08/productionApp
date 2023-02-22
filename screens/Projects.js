@@ -73,7 +73,7 @@ export default function Projects({ navigation }) {
                   >
                     <View>
                       <Text
-                        style={{ color: '#d7af43', fontSize: 18, fontWeight: "bold" }}
+                        style={{ color: '#D7AF43', fontSize: 18, fontWeight: "bold" }}
                       >
                         {item.pp_project_label}
                       </Text>
@@ -91,14 +91,12 @@ export default function Projects({ navigation }) {
 
 const styles = StyleSheet.create({
   btnProject: {
-    borderTopColor: "black",
-    borderTopWidth: 1,
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
+    
     width: "100%",
-    height: 60,
+    height: 70,
+    marginVertical:10 ,
     justifyContent: "center",
-    backgroundColor: '#d7af43'
+    backgroundColor: '#D7AF43'
   },
   container: {
     paddingTop: 20,

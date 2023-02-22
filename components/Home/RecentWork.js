@@ -24,15 +24,15 @@ export default function RecentWork({ navigation }) {
   return (
     <View>
       <RowSpaceContainer>
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5, color: '#d7af43' }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5, color: '#D7AF43' }}>
           Recent Work
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("Projects")}
           style={{ flexDirection: "row", alignItems: "center" }}
         >
-          <Text style={{color: '#d7af43'}}>View all</Text>
-          <Icon name="arrow-right-alt" size={22} />
+          <Text style={{color: '#D7AF43'}}>View all</Text>
+          <Icon color={'#D7AF43'} name="arrow-right-alt" size={22} />
         </TouchableOpacity>
       </RowSpaceContainer>
       <View style={styles.flatListView}>

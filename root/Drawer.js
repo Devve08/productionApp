@@ -18,7 +18,7 @@ export default function DrawerContent(props) {
   } = useContext(SessionContext);
 
   return (
-    <View style={{ backgroundColor: '#d7af43', flex: 1 }}>
+    <View style={{ backgroundColor: '#D7AF43', flex: 1 }}>
       <StatusBar style="dark" />
       <DrawerContentScrollView {...props}>
         <View
@@ -30,7 +30,7 @@ export default function DrawerContent(props) {
           }}
         >
           <Image
-            source={require("../assets/images/1978.png")}
+            source={require("../assets/images/t_logo.png")}
             style={{
               width: 170,
               height: 150,
@@ -39,19 +39,16 @@ export default function DrawerContent(props) {
               resizeMode: 'contain'
             }}
           />
-          <Text
-            style={{ color: Colors.primary, fontSize: 16, fontWeight: "bold" }}
-          ></Text>
         </View>
 
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-     {isLoggedIn?  <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
+     {isLoggedIn?  <View style={{ padding: 20 }}>
         <TouchableOpacity onPress={Logout} style={{ paddingVertical: 15 }}>
           <View style={{ flexDirection: "row" }}>
-            <Ionicons name="exit-outline" size={22} color={Colors.darkLight} />
+            {/* <Ionicons name="exit-outline" size={22} color={Colors.darkLight} /> */}
             <Text
-              style={{ marginLeft: 10, fontSize: 16, color: Colors.darkLight }}
+              style={{ marginLeft: 10, fontSize: 20, fontWeight: 'bold', color: 'black' }}
             >
               Logout
             </Text>

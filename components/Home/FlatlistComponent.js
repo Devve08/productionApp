@@ -29,19 +29,19 @@ export default function FlatlistComponent({
             {restaurant ? (
               <Icon
                 name="local-restaurant"
-                color={'#d7af43'}
-                backgroundColor={'#d7af43'}
+                color={'#D7AF43'}
+                backgroundColor={'#D7AF43'}
                 style={styles.icon}
                 size={25}
               />
             ) : null}
             <View>
               <Text
-                style={{ color: "#d7af43", fontSize: 18, fontWeight: "bold" }}
+                style={{ color: "#D7AF43", fontSize: 18, fontWeight: "bold" }}
               >
                 {title}
               </Text>
-              <Text style={{ color: "#d7af43" }}>{title}</Text>
+              <Text style={{ color: "#D7AF43" }}>{title}</Text>
             </View>
           </View>
         </LinearGradient>

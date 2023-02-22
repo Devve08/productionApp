@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Text } from "react-native";
+import { Image, Text, View } from "react-native";
 import Login from "./../screens/Login";
 import FontAwesome from "react-native-vector-icons/FontAwesome5";
 import Welcome from "../screens/Welcome";
@@ -22,6 +22,8 @@ import SingleNewsScreen from "../screens/SingleNewsScreen";
 import AllNews from "../screens/AllNews";
 import HotelsList from "../screens/HotelsList";
 import SubCategories from "../screens/SubCategories";
+import terriblelisbon from "../assets/images/t_lisbon.png";
+import terribleGuys from '../assets/images/t_guys_h.png'
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -32,94 +34,63 @@ function DrawerStack({ navigation }) {
     <Drawer.Navigator
       screenOptions={{
         headerShown: true,
-        drawerActiveBackgroundColor: Colors.lightGrey,
-        drawerActiveTintColor: "#fff",
+        drawerActiveBackgroundColor: "black",
+        drawerActiveTintColor: "#D7AF43",
         drawerInactiveTintColor: Colors.black,
         drawerLabelStyle: {
-          marginLeft: -20,
-          fontSize: 16,
+          fontSize: 20,
         },
       }}
       drawerContent={props => (
         <DrawerContent navigation={navigation} {...props} />
       )}
     >
-      <Drawer.Screen
-        name="Home"
-        component={Welcome}
-        options={{
-          drawerIcon: ({ color }) => (
-            <Ionicons name="home-outline" size={22} color={color} />
-          ),
-          headerTitle: () => {
-            return (
-              <Text
-                style={{
-                  fontSize: 18,
-                  fontWeight: "bold",
-                  textDecorationLine: "line-through",
-                }}
-              >
-                Home
-              </Text>
-            );
-          },
-          headerStyle: {
-            backgroundColor: "#d7af43",
-          },
-        }}
-      />
-      <Drawer.Screen
-        name="City Guide"
-        component={CityGuide}
-        options={{
-          drawerIcon: ({ color }) => (
-            <FontAwesome name="city" size={22} color={color} />
-          ),
-          headerTitle: () => {
-            return (
-              <Text
-                style={{
-                  fontSize: 18,
-                  fontWeight: "bold",
-                  textDecorationLine: "line-through",
-                }}
-              >
-                City Guide
-              </Text>
-            );
-          },
-          headerStyle: {
-            backgroundColor: "#d7af43",
-          },
-        }}
-      />
       {isLoggedIn && (
         <>
+          <Drawer.Screen
+            name="Films"
+            component={Welcome}
+            options={{
+              // drawerIcon: ({ color }) => (
+              //   <Ionicons name="home-outline" size={22} color={color} />
+              // ),
+              headerTitle: () => {
+                return <Image source={terribleGuys} style={{width:200, height: 50}} />;
+              },
+              headerStyle: {
+                backgroundColor: "#D7AF43",
+              },
+            }}
+          />
+          <Drawer.Screen
+            name="City Guide"
+            component={CityGuide}
+            options={{
+              // drawerIcon: ({ color }) => (
+              //   <FontAwesome name="city" size={22} color={color} />
+              // ),
+              headerTitle: () => {
+                return <Image source={terriblelisbon} style={{width:140, height: 50}} />;
+              },
+              headerStyle: {
+                backgroundColor: "#D7AF43",
+              },
+            }}
+          />
           <Drawer.Screen
             name="Projects"
             component={isLoggedIn ? Projects : Login}
             options={{
               title: "Projects",
               headerShown: true,
-              drawerIcon: ({ color }) => (
-                <FontAwesome name="project-diagram" size={22} color={color} />
-              ),
+              // drawerIcon: ({ color }) => (
+              //   <FontAwesome name="project-diagram" size={22} color={color} />
+              // ),
               headerTitle: () => {
-                return (
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      fontWeight: "bold",
-                      textDecorationLine: "line-through",
-                    }}
-                  >
-                    Projects
-                  </Text>
-                );
+                return <Image source={terribleGuys} style={{width:200, height: 50}} />;
               },
               headerStyle: {
-                backgroundColor: "#d7af43",
+                backgroundColor: "#D7AF43",
               },
             }}
           />
@@ -129,57 +100,56 @@ function DrawerStack({ navigation }) {
             options={{
               title: "News",
               headerShown: true,
-              drawerIcon: ({ color }) => (
-                <FontAwesome name="newspaper" size={22} color={color} />
-              ),
+              // drawerIcon: ({ color }) => (
+              //   <FontAwesome name="newspaper" size={22} color={color} />
+              // ),
               headerTitle: () => {
                 return (
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      fontWeight: "bold",
-                      textDecorationLine: "line-through",
-                    }}
-                  >
-                    News
-                  </Text>
+                  <Text style={{fontSize: 20, fontWeight: "bold"}}>News</Text>
                 );
               },
               headerStyle: {
-                backgroundColor: "#d7af43",
+                backgroundColor: "#D7AF43",
               },
             }}
           />
         </>
       )}
       {!isLoggedIn && (
-        <Drawer.Screen
-          name="Login"
-          component={Login}
-          options={{
-            title: "Login",
-            headerShown: true,
-            drawerIcon: ({ color }) => (
-              <FontAwesome name="sign-in-alt" size={22} color={color} />
-            ),
-            headerTitle: () => {
-              return (
-                <Text
-                  style={{
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    textDecorationLine: "line-through",
-                  }}
-                >
-                  Login
-                </Text>
-              );
-            },
-            headerStyle: {
-              backgroundColor: "#d7af43",
-            },
-          }}
-        />
+        <>
+          <Drawer.Screen
+            name="City Guide"
+            component={CityGuide}
+            options={{
+              // drawerIcon: ({ color }) => (
+              //   <FontAwesome name="city" size={22} color={color} />
+              // ),
+              headerTitle: () => {
+                return <Image source={terriblelisbon} style={{width:140, height: 50}} />;
+              },
+              headerStyle: {
+                backgroundColor: "#D7AF43",
+              },
+            }}
+          />
+          <Drawer.Screen
+            name="Login"
+            component={Login}
+            options={{
+              title: "Login",
+              headerShown: false,
+              // drawerIcon: ({ color }) => (
+              //   <FontAwesome name="sign-in-alt" size={22} color={color} />
+              // ),
+              headerTitle: () => {
+                return <Text>Login</Text>;
+              },
+              headerStyle: {
+                backgroundColor: "#D7AF43",
+              },
+            }}
+          />
+        </>
       )}
     </Drawer.Navigator>
   );
@@ -209,20 +179,12 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      Calendar
-                    </Text>
+                    <Image source={terribleGuys} style={{width:200, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: '#d7af43'
-                }
+                  backgroundColor: "#D7AF43",
+                },
               }}
               name="Calendar"
               component={Calendar}
@@ -232,15 +194,7 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      Project
-                    </Text>
+                    <Image source={terribleGuys} style={{width:200, height: 50}} />
                   );
                 },
               }}
@@ -252,19 +206,11 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      List of places
-                    </Text>
+                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: "#d7af43",
+                  backgroundColor: "#D7AF43",
                 },
               }}
               name="SubCategories"
@@ -275,19 +221,11 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      List of places
-                    </Text>
+                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: "#d7af43",
+                  backgroundColor: "#D7AF43",
                 },
               }}
               name="HotelsList"
@@ -298,20 +236,12 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      Project Files
-                    </Text>
+                    <Image source={terribleGuys} style={{width:200, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: "#d7af43"
-                }
+                  backgroundColor: "#D7AF43",
+                },
               }}
               name="ProjectFiles"
               component={ProjectFiles}
@@ -321,20 +251,12 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      Contacts
-                    </Text>
+                    <Image source={terribleGuys} style={{width:200, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: "#d7af43"
-                }
+                  backgroundColor: "#D7AF43",
+                },
               }}
               name="Contacts"
               component={Contacts}
@@ -349,9 +271,9 @@ export default function RootStack() {
           <>
             <Stack.Screen
               options={{
-                headerShown: true,
+                headerShown: false,
                 headerStyle: {
-                  backgroundColor: "#d7af43",
+                  backgroundColor: "#D7AF43",
                 },
                 headerTitle: () => {
                   return (
@@ -381,19 +303,11 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      List of places
-                    </Text>
+                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: "#d7af43",
+                  backgroundColor: "#D7AF43",
                 },
               }}
               name="SubCategories"
@@ -404,19 +318,11 @@ export default function RootStack() {
                 headerShown: true,
                 headerTitle: () => {
                   return (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        fontWeight: "bold",
-                        textDecorationLine: "line-through",
-                      }}
-                    >
-                      List of places
-                    </Text>
+                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
                   );
                 },
                 headerStyle: {
-                  backgroundColor: "#d7af43",
+                  backgroundColor: "#D7AF43",
                 },
               }}
               name="HotelsList"

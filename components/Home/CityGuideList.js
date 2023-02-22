@@ -24,15 +24,15 @@ export default function CityGuideList({ navigation }) {
   return (
     <View>
       <RowSpaceContainer>
-        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5, color: '#d7af43' }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold", marginBottom: 5, color: '#D7AF43' }}>
           City Guide
         </Text>
         <TouchableOpacity
           onPress={() => navigation.navigate("City Guide")}
           style={{ flexDirection: "row", alignItems: "center" }}
         >
-          <Text style={{color: '#d7af43'}}>View all</Text>
-          <Icon name="arrow-right-alt" size={22} />
+          <Text style={{color: '#D7AF43'}}>View all</Text>
+          <Icon color={'#D7AF43'} name="arrow-right-alt" size={22} />
         </TouchableOpacity>
       </RowSpaceContainer>
       <View style={{ height: 160, width: "100%", marginBottom: 20 }}>

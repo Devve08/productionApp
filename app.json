@@ -4,9 +4,9 @@
     "slug": "productionApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icontwo.png",
+    "icon": "./assets/icontwo.jpg",
     "splash": {
-      "image": "./assets/images/1978.png",
+      "image": "./assets/images/1978s.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -29,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8224721c-488d-4124-afa6-2d551c91b461"
+      }
     }
   }
 }

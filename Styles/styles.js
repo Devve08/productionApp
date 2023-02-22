@@ -79,7 +79,7 @@ export const StyledTextInput = styled.TextInput`
     font-size: 16px;
     height: 50px;
     margin-bottom: 10px;
-    color: #d7af43;
+    color: #D7AF43;
 `
 
 export const StyledInputLabel = styled.Text`
@@ -114,7 +114,7 @@ export const StyledButton = styled.TouchableOpacity`
 `
 
 export const ButtonText = styled.Text`
-    color: #d7af43;
+    color: #D7AF43;
     font-weight: bold;
     font-size: 17px;
     ${(props)=> props.google == true ? `

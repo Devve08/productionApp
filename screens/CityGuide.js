@@ -21,7 +21,7 @@ export default function CityGuide({navigation}) {
   return (
     <View style={styles.container}>
         <FlatList 
-        style={{width: '100%', padding: 20}}
+        style={{width: '100%'}}
         data={categories}
         keyExtractor={(item, _index)=> _index}
         renderItem={({item, index})=> (
@@ -45,14 +45,13 @@ const styles = StyleSheet.create({
       backgroundColor: 'black'
   },
   newsContainer: {
-      backgroundColor: '#d7af43', 
+      backgroundColor: '#D7AF43', 
       height: 75, width: '100%', 
-      marginBottom: 10,
+      marginVertical: 10,
       flexDirection: 'row',
       justifyContent: 'flex-start',
       alignItems: 'center',
       paddingLeft: 20,
-      borderRadius: 10
   },
   image: {
       width: 50,

@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Octicons, Ionicons, Fontisto } from "@expo/vector-icons";
 import KeyboardAvoidingWrapper from "../Styles/KeyboardAvoidingWrapper";
 
-import { View, Image, KeyboardAvoidingView, ScrollView } from "react-native";
+import { View, Image, KeyboardAvoidingView, ScrollView, Text } from "react-native";
 import {
   StyledContainer,
   InnerContainer,
@@ -22,14 +22,10 @@ import {
   MsgBox,
 } from "../Styles/styles";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
-import getRequest from "../network/network";
-import Loading from "./Loading";
 import SessionContext from "../context/SessionContext";
-import logo from "../assets/images/1978.png";
+import logo from "../assets/images/t_logo.png";
 
-const { primary, secondary, light, darkLight, white, black } = Colors;
+
 
 export default function Login({ navigation }) {
   const [hidePassword, setHidePassword] = useState(true);
@@ -42,10 +38,10 @@ export default function Login({ navigation }) {
 
   return (
     <KeyboardAvoidingView
-      style={{ backgroundColor: "#d7af43", height: "100%" }}
+      style={{ backgroundColor: "#D7AF43", height: "100%" }}
     >
-      <ScrollView style={{ backgroundColor: "#d7af43", height: "100%" }}>
-        <View style={{ backgroundColor: "#d7af43", height: "100%" }}>
+      <ScrollView style={{ backgroundColor: "#D7AF43", height: "100%" }}>
+        <View style={{ backgroundColor: "#D7AF43", height: "100%" }}>
           <StatusBar style="dark" />
           <InnerContainer>
             <Image
@@ -56,16 +52,15 @@ export default function Login({ navigation }) {
 
             <StyledFormArea>
               <MyTextInput
-                label={"Username"}
-                icon="person"
+                label={"I'M TERRIBLE TOO:"}
+                icon="U:"
                 placeholderTextColor={"grey"}
                 onChangeText={text => setUserName(text)}
                 keyBoardType="email-address"
               />
 
               <MyTextInput
-                label={"Password"}
-                icon="lock"
+                icon="L:"
                 placeholderTextColor={"grey"}
                 onChangeText={text => setPassword(text)}
                 secureTextEntry={hidePassword}
@@ -84,7 +79,10 @@ export default function Login({ navigation }) {
               >
                 <ButtonText>Skip</ButtonText>
               </StyledButton>
+            
+              
             </StyledFormArea>
+            <Text style={{fontWeight: 'bold', fontSize: 20, marginTop: 50 }} >WELCOME. WHERE TO GO?</Text>
           </InnerContainer>
         </View>
       </ScrollView>
@@ -103,7 +101,7 @@ const MyTextInput = ({
   return (
     <View>
       <LeftIcon>
-        <Octicons name={icon} size={30} color={'#d7af43'} />
+        <Text style={{color: "#D7AF43", fontWeight: "bold"}}>{icon}</Text>
       </LeftIcon>
       <StyledInputLabel>{label}</StyledInputLabel>
       <StyledTextInput {...props} />
@@ -112,7 +110,7 @@ const MyTextInput = ({
           <Ionicons
             name={hidePassword ? "md-eye-off" : "md-eye"}
             size={30}
-            color={'#d7af43'}
+            color={'#D7AF43'}
           />
         </RightIcon>
       )}

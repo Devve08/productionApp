@@ -75,7 +75,7 @@ export default function HotelInfoModal({ modalOpen, closeModal, item }) {
                 onPress={() => openPDF(item.h_instagram_account)}
                 size={30}
                 name="instagram"
-                color={'#d7af43'}
+                color={'#D7AF43'}
               />
             </TouchableOpacity>
             <TouchableOpacity>
@@ -83,7 +83,7 @@ export default function HotelInfoModal({ modalOpen, closeModal, item }) {
                 onPress={() => openPDF(item.h_twitter_account)}
                 name="twitter-square"
                 size={30}
-                color={'#d7af43'}
+                color={'#D7AF43'}
               />
             </TouchableOpacity>
             <TouchableOpacity>
@@ -91,7 +91,7 @@ export default function HotelInfoModal({ modalOpen, closeModal, item }) {
                 onPress={() => openPDF(item.h_facebook_account)}
                 name="facebook-official"
                 size={30}
-                color={'#d7af43'}
+                color={'#D7AF43'}
               />
             </TouchableOpacity>
           </View>
@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     paddingHorizontal: 10,
     textAlign: "center",
-    color: '#d7af43'
+    color: '#D7AF43'
   },
   website: {
     fontSize: 16,
     paddingHorizontal: 10,
     textAlign: "center",
     textDecorationLine: "underline",
-    color: '#d7af43'
+    color: '#D7AF43'
   },
   address: {
     fontSize: 16,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     textAlign: "center",
     textDecorationLine: "underline",
-    color: '#d7af43'
+    color: '#D7AF43'
   },
   hotelName: {
     fontSize: 16,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingHorizontal: 10,
     textAlign: "center",
-    color: '#d7af43'
+    color: '#D7AF43'
   },
   city: {
     fontSize: 18,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingHorizontal: 10,
     textAlign: "center",
-    color: '#d7af43'
+    color: '#D7AF43'
   },
   container: {
     width: "100%",

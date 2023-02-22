@@ -15,9 +15,9 @@ export default function Footer() {
           marginHorizontal: 80,
         }}
       >
-        <Icon name="facebook-f" size={25} color={'#d7af43'} />
-        <Icon name="instagram" size={25} color={'#d7af43'}  />
-        <Icon2 name="globe" size={25} color={'#d7af43'}  />
+        <Icon name="facebook-f" size={25} color={'#D7AF43'} />
+        <Icon name="instagram" size={25} color={'#D7AF43'}  />
+        <Icon2 name="globe" size={25} color={'#D7AF43'}  />
       </View>
     </View>
   );

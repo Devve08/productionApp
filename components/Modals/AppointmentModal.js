@@ -17,8 +17,8 @@ export default function AppointmentModal({ appointmentModalOpen, closeModal, app
                 flexDirection: 'column',
                 alignItems: 'center',
             }}>
-                <Text style={{ fontSize: 18, fontWeight: 'bold', paddingVertical: 5, color: "#d7af43" }}>{appointmentInfo.pa_apt_title}</Text>
-                <Text style={{ fontSize: 18, paddingVertical: 5, color: "#d7af43" }}>{appointmentInfo.pa_apt_description}</Text>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', paddingVertical: 5, color: "#D7AF43" }}>{appointmentInfo.pa_apt_title}</Text>
+                <Text style={{ fontSize: 18, paddingVertical: 5, color: "#D7AF43" }}>{appointmentInfo.pa_apt_description}</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: "70%", paddingTop: 20 }}>
                     <View style={{ flexDirection: 'column', alignItems: 'center' }}>
                         <Text style={{ paddingVertical: 10, fontSize: 16, color: 'white' }}>Start:</Text>
