@@ -4,7 +4,7 @@
     "slug": "productionApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icontwo.jpg",
+    "icon": "./assets/icontwo.png",
     "splash": {
       "image": "./assets/images/1978s.png",
       "resizeMode": "contain",
