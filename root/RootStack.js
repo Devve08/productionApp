@@ -24,12 +24,25 @@ import HotelsList from "../screens/HotelsList";
 import SubCategories from "../screens/SubCategories";
 import terriblelisbon from "../assets/images/t_lisbon.png";
 import terribleGuys from '../assets/images/t_guys_h.png'
+import {Dimensions, PixelRatio} from "react-native";
+
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 function DrawerStack({ navigation }) {
   const { isLoading, isLoggedIn } = useContext(SessionContext);
+  const {width, height} = Dimensions.get("window");
+
+  const wp = (number) => {
+    let givenWidth = typeof number === "number" ? number : parseFloat(number);
+    return PixelRatio.roundToNearestPixel((width * givenWidth) / 100);
+};
+
+const hp = (number) => {
+    let givenHeight = typeof number === "number" ? number : parseFloat(number);
+    return PixelRatio.roundToNearestPixel((height * givenHeight) / 100);
+};
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -55,10 +68,11 @@ function DrawerStack({ navigation }) {
               //   <Ionicons name="home-outline" size={22} color={color} />
               // ),
               headerTitle: () => {
-                return <Image source={terribleGuys} style={{width:200, height: 50}} />;
+                return <Image source={terribleGuys} style={{width: wp('70%'), height: hp('10%')}} />;
               },
               headerStyle: {
                 backgroundColor: "#D7AF43",
+                height: hp('20%')
               },
             }}
           />
@@ -70,10 +84,11 @@ function DrawerStack({ navigation }) {
               //   <FontAwesome name="city" size={22} color={color} />
               // ),
               headerTitle: () => {
-                return <Image source={terriblelisbon} style={{width:140, height: 50}} />;
+                return <Image source={terriblelisbon} style={{width: wp('55%'), height: hp('10%')}} />;
               },
               headerStyle: {
                 backgroundColor: "#D7AF43",
+                height: hp('20%'),
               },
             }}
           />
@@ -87,10 +102,11 @@ function DrawerStack({ navigation }) {
               //   <FontAwesome name="project-diagram" size={22} color={color} />
               // ),
               headerTitle: () => {
-                return <Image source={terribleGuys} style={{width:200, height: 50}} />;
+                return <Image source={terribleGuys} style={{width: wp('70%'), height: hp('10%')}} />;
               },
               headerStyle: {
                 backgroundColor: "#D7AF43",
+                height: hp('20%')
               },
             }}
           />
@@ -157,6 +173,17 @@ function DrawerStack({ navigation }) {
 
 export default function RootStack() {
   const { isLoading, isLoggedIn } = useContext(SessionContext);
+  const {width, height} = Dimensions.get("window");
+
+  const wp = (number) => {
+    let givenWidth = typeof number === "number" ? number : parseFloat(number);
+    return PixelRatio.roundToNearestPixel((width * givenWidth) / 100);
+};
+
+const hp = (number) => {
+    let givenHeight = typeof number === "number" ? number : parseFloat(number);
+    return PixelRatio.roundToNearestPixel((height * givenHeight) / 100);
+};
 
   return (
     <NavigationContainer>
@@ -178,12 +205,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terribleGuys} style={{width:200, height: 50}} />
-                  );
+                  return <Image source={terribleGuys} style={{width: wp('70%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%')
                 },
               }}
               name="Calendar"
@@ -193,9 +219,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terribleGuys} style={{width:200, height: 50}} />
-                  );
+                  return <Image source={terribleGuys} style={{width: wp('70%'), height: hp('10%')}} />;
+                },
+                headerStyle: {
+                  backgroundColor: "#D7AF43",
+                  height: hp('20%')
                 },
               }}
               name="Project"
@@ -205,12 +233,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
-                  );
+                  return <Image source={terriblelisbon} style={{width: wp('55%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%'),
                 },
               }}
               name="SubCategories"
@@ -220,12 +247,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
-                  );
+                  return <Image source={terriblelisbon} style={{width: wp('55%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%'),
                 },
               }}
               name="HotelsList"
@@ -235,12 +261,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terribleGuys} style={{width:200, height: 50}} />
-                  );
+                  return <Image source={terribleGuys} style={{width: wp('70%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%')
                 },
               }}
               name="ProjectFiles"
@@ -250,12 +275,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terribleGuys} style={{width:200, height: 50}} />
-                  );
+                  return <Image source={terribleGuys} style={{width: wp('70%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%')
                 },
               }}
               name="Contacts"
@@ -302,12 +326,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
-                  );
+                  return <Image source={terriblelisbon} style={{width: wp('55%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%'),
                 },
               }}
               name="SubCategories"
@@ -317,12 +340,11 @@ export default function RootStack() {
               options={{
                 headerShown: true,
                 headerTitle: () => {
-                  return (
-                    <Image source={terriblelisbon} style={{width:140, height: 50}} />
-                  );
+                  return <Image source={terriblelisbon} style={{width: wp('55%'), height: hp('10%')}} />;
                 },
                 headerStyle: {
                   backgroundColor: "#D7AF43",
+                  height: hp('20%'),
                 },
               }}
               name="HotelsList"
